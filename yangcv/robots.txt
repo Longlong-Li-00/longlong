@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /gallery.html
-Disallow: /zh/gallery.html
-Disallow: /en/gallery.html
-Disallow: /assets/Albums/
