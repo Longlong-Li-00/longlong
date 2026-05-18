@@ -1,26 +1,24 @@
-# Academic CV Site (Pure HTML)
+# Longlong Li Academic Website
 
-This is a bilingual (English/Chinese) academic CV website built with plain HTML, CSS, and a tiny JS helper.
+This repository is a bilingual personal academic website for Longlong Li, built with plain HTML, CSS, and a small JavaScript helper.
 
-## How to Use
+## Pages
 
-- Open `index.html` in your browser for English (default).
-- Open `zh/index.html` for Chinese.
+- `index.html`: default English homepage
+- `en/index.html`: English homepage copy
+- `zh/index.html`: Chinese homepage
+- `gallery.html`: English visual archive
+- `zh/gallery.html`: Chinese visual archive
 
-No build tools or installations are required.
+## Customization
 
-## Customize Content
+- Update homepage content in `index.html` and `zh/index.html`
+- Add your real profile links where the placeholder social buttons are currently shown
+- Replace the portrait by updating `assets/Longlong.jpg`
+- Add future gallery images to `assets/Albums` using the naming format `YYYYMMDD_标题.扩展名`
 
-Edit the following files directly:
+## Deployment
 
-- `index.html` — English content (default)
-- `zh/index.html` — Chinese content
-- `styles.css` — styling
+This is a static site and can be deployed directly to GitHub Pages.
 
-## Assets
-
-Place your portrait here:
-
-- `assets/avatar.jpg` — portrait
-
-If you don’t provide it, the page still renders.
+If you want to use a custom domain later, create a new `CNAME` file with your own domain before deploying.
