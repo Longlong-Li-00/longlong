@@ -7,8 +7,10 @@ This repository is a bilingual personal academic website for Longlong Li, built 
 - `index.html`: default English homepage
 - `en/index.html`: English homepage copy
 - `zh/index.html`: Chinese homepage
-- `gallery.html`: English visual archive
-- `zh/gallery.html`: Chinese visual archive
+- `gallery.html`: English gallery page
+- `zh/gallery.html`: Chinese gallery page
+- `cv.html`: English CV page
+- `zh/cv.html`: Chinese CV page
 
 ## Customization
 
@@ -16,6 +18,7 @@ This repository is a bilingual personal academic website for Longlong Li, built 
 - Add your real profile links where the placeholder social buttons are currently shown
 - Replace the portrait by updating `assets/Longlong.jpg`
 - Add future gallery images to `assets/Albums` using the naming format `YYYYMMDD_标题.扩展名`
+- Update the shared gallery data in `scripts.js` if you want to manually adjust displayed titles
 
 ## Deployment
 
