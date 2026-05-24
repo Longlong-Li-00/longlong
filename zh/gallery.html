@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>李龙龙 | 影像记录</title>
-    <meta name="description" content="李龙龙在学习、科研与生活中的时间线影像记录。" />
+    <title>李龙龙 | 图集</title>
+    <meta name="description" content="李龙龙在学习、科研、会议与生活中的时间线图集。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,202 +13,44 @@
     />
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body data-page="gallery">
     <div class="page">
-      <header class="section archive-hero">
-        <p class="archive-kicker">Visual Archive</p>
-        <div class="section-header">
-          <h2>影像记录</h2>
-          <p class="archive-intro">
-            按时间顺序整理的学习、科研、旅行与生活节点记录。每张照片标题直接取自原始文件名，便于后续继续维护。
-          </p>
-        </div>
-        <div class="hero-actions">
-          <a class="button outline" href="./">返回主页</a>
-          <a class="button outline" href="../gallery.html">English</a>
-        </div>
-      </header>
+      <div class="layout">
+        <nav class="nav">
+          <div class="nav-title">目录</div>
+          <ul class="nav-list">
+            <li><a href="index.html#about" data-nav-key="about">关于我</a></li>
+            <li><a href="index.html#research" data-nav-key="research">研究方向</a></li>
+            <li><a href="index.html#projects" data-nav-key="projects">项目</a></li>
+            <li><a href="publications.html" data-nav-key="publications">论文发表</a></li>
+            <li><a href="conferences.html" data-nav-key="conferences">学术会议</a></li>
+            <li><a href="patents.html" data-nav-key="patents">专利</a></li>
+            <li><a href="awards.html" data-nav-key="awards">奖励荣誉</a></li>
+            <li><a href="gallery.html" data-nav-key="gallery">图集</a></li>
+            <li><a href="cv.html" data-nav-key="cv">简历</a></li>
+            <li><a href="index.html#contact" data-nav-key="contact">联系方式</a></li>
+          </ul>
+          <div class="nav-switch"><a href="../gallery.html">English</a></div>
+        </nav>
 
-      <div class="section-wrapper">
-        <section class="section">
-          <div class="gallery-timeline">
-            <article class="gallery-entry">
-              <div class="gallery-date">2022.09.01</div>
-              <img class="gallery-photo" src="../assets/Albums/20220901_%E6%8A%B5%E8%BE%BE%E9%9F%A9%E5%9B%BD.jpg" alt="抵达韩国" loading="lazy" />
-              <div class="gallery-note">抵达韩国</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2022.11.19</div>
-              <img class="gallery-photo" src="../assets/Albums/20221119_%E5%85%89%E5%B7%9E%E6%97%A0%E7%AD%89%E5%B1%B1.jpg" alt="光州无等山" loading="lazy" />
-              <div class="gallery-note">光州无等山</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2023.01.21</div>
-              <img class="gallery-photo" src="../assets/Albums/20230121_%E8%BF%87%E5%B9%B4.jpg" alt="过年" loading="lazy" />
-              <div class="gallery-note">过年</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2023.05.13</div>
-              <img class="gallery-photo" src="../assets/Albums/20230513_Dongsu%E5%A9%9A%E7%A4%BC.jpg" alt="Dongsu婚礼" loading="lazy" />
-              <div class="gallery-note">Dongsu婚礼</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2023.07.30</div>
-              <img class="gallery-photo" src="../assets/Albums/20230730_%E6%B5%8E%E5%B7%9E%E7%89%9B%E5%B2%9B.jpg" alt="济州牛岛" loading="lazy" />
-              <div class="gallery-note">济州牛岛</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2023.08.23</div>
-              <img class="gallery-photo" src="../assets/Albums/20230823_%E9%87%9C%E5%B1%B1%E5%B9%BF%E5%AE%89%E9%87%8C.jpg" alt="釜山广安里" loading="lazy" />
-              <div class="gallery-note">釜山广安里</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2023.10.19</div>
-              <img class="gallery-photo" src="../assets/Albums/20231019_%E6%B3%A2%E5%85%B0%E5%8D%A1%E6%89%98%E7%BB%B4%E5%85%B9%CE%BCTAS.jpg" alt="波兰卡托维兹μTAS" loading="lazy" />
-              <div class="gallery-note">波兰卡托维兹μTAS</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2023.12.16</div>
-              <img class="gallery-photo" src="../assets/Albums/20231216_%E6%88%91%E5%92%8C%E9%9B%AA%E4%BA%BA.jpg" alt="我和雪人" loading="lazy" />
-              <div class="gallery-note">我和雪人</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.01.24</div>
-              <img class="gallery-photo" src="../assets/Albums/20240124_%E8%8C%82%E6%9C%B1%E6%BB%91%E9%9B%AA.jpg" alt="茂朱滑雪" loading="lazy" />
-              <div class="gallery-note">茂朱滑雪</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.03.16</div>
-              <img class="gallery-photo" src="../assets/Albums/20240316_%E6%B5%8E%E5%B7%9E%E6%B1%89%E6%8B%BF%E5%B1%B1.jpg" alt="济州汉拿山" loading="lazy" />
-              <div class="gallery-note">济州汉拿山</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.04.10</div>
-              <img class="gallery-photo" src="../assets/Albums/20240410_%E5%8A%A8%E7%89%A9%E5%9B%AD.jpg" alt="动物园" loading="lazy" />
-              <div class="gallery-note">动物园</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.08.03</div>
-              <img class="gallery-photo" src="../assets/Albums/20240803_%E9%87%9C%E5%B1%B1%E6%B5%B7%E4%BA%91%E5%8F%B0.jpg" alt="釜山海云台" loading="lazy" />
-              <div class="gallery-note">釜山海云台</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.11.16</div>
-              <img class="gallery-photo" src="../assets/Albums/20241116_%E4%BA%94%E7%AD%89%E5%B1%B1%E9%A1%B6.jpg" alt="五等山顶" loading="lazy" />
-              <div class="gallery-note">五等山顶</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.11.22</div>
-              <img class="gallery-photo" src="../assets/Albums/20241122_%E9%87%9C%E5%B1%B1%E6%B5%B7%E4%B8%8A%E7%83%9F%E8%8A%B1.jpg" alt="釜山海上烟花" loading="lazy" />
-              <div class="gallery-note">釜山海上烟花</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2024.12.25</div>
-              <img class="gallery-photo" src="../assets/Albums/20241225_%E5%9C%A3%E8%AF%9E%E8%8A%82%2B%E6%B1%89%E6%8B%BF%E5%B1%B1.jpg" alt="圣诞节+汉拿山" loading="lazy" />
-              <div class="gallery-note">圣诞节+汉拿山</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.01.29</div>
-              <img class="gallery-photo" src="../assets/Albums/20250129_%E6%9D%AD%E5%B7%9E%E5%BE%84%E5%B1%B1.jpg" alt="杭州径山" loading="lazy" />
-              <div class="gallery-note">杭州径山</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.02.02</div>
-              <img class="gallery-photo" src="../assets/Albums/20250202_%E5%A4%A7%E5%8F%98%E8%B4%A2%E7%A5%9E.jpg" alt="大变财神" loading="lazy" />
-              <div class="gallery-note">大变财神</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.02.04</div>
-              <img class="gallery-photo" src="../assets/Albums/20250204_%E7%A6%8F%E5%B7%9E%E6%B7%BB%E7%A6%8F.jpg" alt="福州添福" loading="lazy" />
-              <div class="gallery-note">福州添福</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.02.27</div>
-              <img class="gallery-photo" src="../assets/Albums/20250227_RLRC%E6%9C%80%E4%BD%B3%E7%A0%94%E7%A9%B6%E7%94%9F.jpg" alt="RLRC最佳研究生" loading="lazy" />
-              <div class="gallery-note">RLRC最佳研究生</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.03.09</div>
-              <img class="gallery-photo" src="../assets/Albums/20250309_%E7%BE%BD%E6%AF%9B%E7%90%83%E6%AF%94%E8%B5%9B.jpg" alt="羽毛球比赛" loading="lazy" />
-              <div class="gallery-note">羽毛球比赛</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.03.28</div>
-              <img class="gallery-photo" src="../assets/Albums/20250328_%E6%B5%8E%E5%B7%9E%E6%9E%AA%E5%87%BB.jpg" alt="济州枪击" loading="lazy" />
-              <div class="gallery-note">济州枪击</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.05.04</div>
-              <img class="gallery-photo" src="../assets/Albums/20250504_%E6%B5%A6%E9%A1%B9SpaceWalk.jpg" alt="浦项SpaceWalk" loading="lazy" />
-              <div class="gallery-note">浦项SpaceWalk</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.05.24</div>
-              <img class="gallery-photo" src="../assets/Albums/20250524_Dr.Nomin.jpg" alt="Dr.Nomin" loading="lazy" />
-              <div class="gallery-note">Dr.Nomin</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.08.26</div>
-              <img class="gallery-photo" src="../assets/Albums/20250826_BK%20FellowShip%20%E5%A5%96%E5%AD%A6%E9%87%91.jpg" alt="BK FellowShip 奖学金" loading="lazy" />
-              <div class="gallery-note">BK FellowShip 奖学金</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.08.28</div>
-              <img class="gallery-photo" src="../assets/Albums/20250828_MNTL%E8%B0%AD%E9%98%B3.jpg" alt="MNTL谭阳" loading="lazy" />
-              <div class="gallery-note">MNTL谭阳</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.10.02</div>
-              <img class="gallery-photo" src="../assets/Albums/20251002_%E6%A5%A0%E5%93%A5%E5%A9%9A%E7%A4%BC.jpg" alt="楠哥婚礼" loading="lazy" />
-              <div class="gallery-note">楠哥婚礼</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.10.07</div>
-              <img class="gallery-photo" src="../assets/Albums/20251007_%E7%B1%B3%E8%8F%B270%E5%91%A8%E5%B9%B4.jpg" alt="米菲70周年" loading="lazy" />
-              <div class="gallery-note">米菲70周年</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.10.27</div>
-              <img class="gallery-photo" src="../assets/Albums/20251027_%E6%B8%A9%E5%93%A5%E5%8D%8ESENSORS.jpg" alt="温哥华SENSORS" loading="lazy" />
-              <div class="gallery-note">温哥华SENSORS</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.11.15</div>
-              <img class="gallery-photo" src="../assets/Albums/20251115_%E9%87%9C%E5%B1%B1%E7%83%9F%E8%8A%B1%E8%8A%82.jpg" alt="釜山烟花节" loading="lazy" />
-              <div class="gallery-note">釜山烟花节</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2025.11.26</div>
-              <img class="gallery-photo" src="../assets/Albums/20251126_%E5%A4%A7%E5%8F%98%E5%9C%A3%E8%AF%9E%E8%80%81%E4%BA%BA.jpg" alt="大变圣诞老人" loading="lazy" />
-              <div class="gallery-note">大变圣诞老人</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2026.01.06</div>
-              <img class="gallery-photo" src="../assets/Albums/20260106_BK%2B%E7%BB%9F%E8%90%A5.jpg" alt="BK+统营" loading="lazy" />
-              <div class="gallery-note">BK+统营</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2026.02.01</div>
-              <img class="gallery-photo" src="../assets/Albums/20260201_%E6%99%BA%E5%BC%82%E5%B1%B1.jpg" alt="智异山" loading="lazy" />
-              <div class="gallery-note">智异山</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2026.02.23</div>
-              <img class="gallery-photo" src="../assets/Albums/20260223_%E9%A9%AC%E5%A4%B4%E4%BA%BA%E6%BB%91%E9%9B%AA.jpg" alt="马头人滑雪" loading="lazy" />
-              <div class="gallery-note">马头人滑雪</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2026.03.28</div>
-              <img class="gallery-photo" src="../assets/Albums/20260328_%E6%B5%8E%E5%B7%9E%E5%8D%A1%E4%B8%81%E8%BD%A6.jpg" alt="济州卡丁车" loading="lazy" />
-              <div class="gallery-note">济州卡丁车</div>
-            </article>
-            <article class="gallery-entry">
-              <div class="gallery-date">2026.03.29</div>
-              <img class="gallery-photo" src="../assets/Albums/20260329_%E8%9B%8B%E7%B3%95%E4%BA%BA.jpg" alt="蛋糕人" loading="lazy" />
-              <div class="gallery-note">蛋糕人</div>
-            </article>
+        <main class="content">
+          <header class="section archive-hero">
+            <p class="archive-kicker">Visual Archive</p>
+            <div class="section-header">
+              <h2>图集</h2>
+              <p class="archive-intro">
+                按时间顺序整理的学习、科研、会议、旅行与生活节点记录。每张图片标题直接来自原始文件名，方便后续继续维护和扩展。
+              </p>
+            </div>
+          </header>
+
+          <div class="section-wrapper">
+            <section class="section">
+              <!-- 当前图集同时保留了科研相关与个人阶段性记录图片，后续可继续细分。 -->
+              <div class="gallery-timeline" data-gallery-root data-gallery-prefix="../"></div>
+            </section>
           </div>
-        </section>
+        </main>
       </div>
     </div>
 
