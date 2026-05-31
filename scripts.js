@@ -31,6 +31,25 @@ function hydrateEmailLinks() {
   }
 }
 
+function bindAnalyticsEvents() {
+  const links = document.querySelectorAll("[data-analytics-event]");
+  if (!links.length) return;
+
+  for (const link of links) {
+    link.addEventListener("click", () => {
+      // Cloudflare Web Analytics handles page-level traffic automatically.
+      // These hooks are kept for optional GA4/custom event tracking if enabled later.
+      if (typeof window.gtag === "function") {
+        window.gtag("event", link.dataset.analyticsEvent || "link_click", {
+          event_category: link.dataset.analyticsCategory || "engagement",
+          event_label: link.dataset.analyticsLabel || link.textContent?.trim() || "link",
+          transport_type: "beacon"
+        });
+      }
+    });
+  }
+}
+
 async function loadGalleryItems(source) {
   const response = await fetch(source, { cache: "no-cache" });
   if (!response.ok) {
@@ -199,6 +218,7 @@ function setActiveNavigation() {
 }
 
 hydrateEmailLinks();
+bindAnalyticsEvents();
 renderGallery();
 formatPublicationItems();
 formatConferenceItems();

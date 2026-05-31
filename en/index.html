@@ -40,9 +40,9 @@
           </p>
           <div class="hero-actions hero-primary-links">
             <a class="button" href="#research">Research</a>
-            <a class="button outline" href="../publications.html">Publications</a>
+            <a class="button outline" href="../publications.html" data-analytics-event="open_publications" data-analytics-category="navigation" data-analytics-label="hero_publications">Publications</a>
             <a class="button outline" href="../cv.html">CV</a>
-            <a class="button outline" href="#contact">Contact</a>
+            <a class="button outline" href="#contact" data-analytics-event="open_contact" data-analytics-category="navigation" data-analytics-label="hero_contact">Contact</a>
           </div>
           <div class="hero-profile-links">
             <a
@@ -51,17 +51,23 @@
               data-email-user="lilonglong2000"
               data-email-domain-name="jnu"
               data-email-domain-tld="ac.kr"
+              data-analytics-event="send_email"
+              data-analytics-category="contact"
+              data-analytics-label="hero_email"
               >Email</a
             >
             <a
               href="https://scholar.google.com/citations?user=eehgHYgAAAAJ&amp;hl=zh-CN"
               target="_blank"
               rel="noreferrer"
+              data-analytics-event="open_google_scholar"
+              data-analytics-category="profile_link"
+              data-analytics-label="hero_google_scholar"
               >Google Scholar</a
             >
-            <a href="https://orcid.org/0009-0008-4062-5191" target="_blank" rel="noreferrer">ORCID</a>
-            <a href="https://longlongli.com" target="_blank" rel="noreferrer">Homepage</a>
-            <a href="https://sites.google.com/view/mntljnu" target="_blank" rel="noreferrer">MNTL</a>
+            <a href="https://orcid.org/0009-0008-4062-5191" target="_blank" rel="noreferrer" data-analytics-event="open_orcid" data-analytics-category="profile_link" data-analytics-label="hero_orcid">ORCID</a>
+            <a href="https://longlongli.com" target="_blank" rel="noreferrer" data-analytics-event="open_homepage" data-analytics-category="profile_link" data-analytics-label="hero_homepage">Homepage</a>
+            <a href="https://sites.google.com/view/mntljnu" target="_blank" rel="noreferrer" data-analytics-event="open_mntl" data-analytics-category="profile_link" data-analytics-label="hero_mntl">MNTL</a>
           </div>
           <div class="hero-interests">
             <p class="eyebrow">Research Interests</p>
@@ -132,7 +138,7 @@
                   <h2>Featured Projects</h2>
                   <p class="section-intro">Selected projects that represent my recent academic and engineering trajectory.</p>
                 </div>
-                <a class="section-link" href="../cv.html">View all projects</a>
+                <a class="section-link" href="../cv.html" data-analytics-event="open_projects" data-analytics-category="navigation" data-analytics-label="home_projects_archive">View all projects</a>
               </div>
               <div class="project-grid">
                 <article class="project-card">
@@ -266,6 +272,9 @@
                       data-email-domain-name="jnu"
                       data-email-domain-tld="ac.kr"
                       data-email-text="address"
+                      data-analytics-event="send_email"
+                      data-analytics-category="contact"
+                      data-analytics-label="contact_email"
                     ></a>
                   </div>
                   <div class="contact-item">
@@ -274,10 +283,10 @@
                   </div>
                 </div>
                 <div class="mini-links">
-                  <a href="https://scholar.google.com/citations?user=eehgHYgAAAAJ&amp;hl=zh-CN" target="_blank" rel="noreferrer">Google Scholar</a>
-                  <a href="https://orcid.org/0009-0008-4062-5191" target="_blank" rel="noreferrer">ORCID</a>
-                  <a href="https://longlongli.com" target="_blank" rel="noreferrer">Homepage</a>
-                  <a href="https://sites.google.com/view/mntljnu" target="_blank" rel="noreferrer">MNTL</a>
+                  <a href="https://scholar.google.com/citations?user=eehgHYgAAAAJ&amp;hl=zh-CN" target="_blank" rel="noreferrer" data-analytics-event="open_google_scholar" data-analytics-category="profile_link" data-analytics-label="contact_google_scholar">Google Scholar</a>
+                  <a href="https://orcid.org/0009-0008-4062-5191" target="_blank" rel="noreferrer" data-analytics-event="open_orcid" data-analytics-category="profile_link" data-analytics-label="contact_orcid">ORCID</a>
+                  <a href="https://longlongli.com" target="_blank" rel="noreferrer" data-analytics-event="open_homepage" data-analytics-category="profile_link" data-analytics-label="contact_homepage">Homepage</a>
+                  <a href="https://sites.google.com/view/mntljnu" target="_blank" rel="noreferrer" data-analytics-event="open_mntl" data-analytics-category="profile_link" data-analytics-label="contact_mntl">MNTL</a>
                 </div>
               </div>
             </section>
@@ -286,6 +295,17 @@
       </div>
     </div>
 
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "[CLOUDFLARE_WEB_ANALYTICS_TOKEN]"}'></script>
+    <!-- Optional Google Analytics 4. Replace G-XXXXXXXXXX and uncomment if you want custom event reporting in GA4. -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
     <script src="../scripts.js"></script>
   </body>
 </html>
