@@ -1,0 +1,227 @@
+[
+  {
+    "id": "conf_002_link",
+    "label_en": "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields",
+    "label_zh": "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10946052",
+    "type": "conference",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "conf_003_link",
+    "label_en": "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and Mea to Monitor Contractility and Field Potential in Cardiomyocytes",
+    "label_zh": "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and Mea to Monitor Contractility and Field Potential in Cardiomyocytes",
+    "url": "https://ieeexplore.ieee.org/abstract/document/10917809",
+    "type": "conference",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "conf_004_link",
+    "label_en": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
+    "label_zh": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
+    "url": "https://ieeexplore.ieee.org/abstract/document/11419567",
+    "type": "conference",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "conf_007_link",
+    "label_en": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
+    "label_zh": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
+    "url": "https://ieeexplore.ieee.org/abstract/document/11330375",
+    "type": "conference",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "conf_008_link",
+    "label_en": "Integrated Bioelectronic Platform Utilizing PEDOT: PSS Strain Sensors for Real-Time Mechanostimulation and Sensing",
+    "label_zh": "Integrated Bioelectronic Platform Utilizing PEDOT: PSS Strain Sensors for Real-Time Mechanostimulation and Sensing",
+    "url": "https://ieeexplore.ieee.org/abstract/document/11331195",
+    "type": "conference",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "cv_download_01",
+    "label_en": "Download Full Academic CV",
+    "label_zh": "",
+    "url": "assets/CV/Longlong_Li_Academic_CV_EN.pdf",
+    "type": "cv_download",
+    "visible": true,
+    "notes": "EN download"
+  },
+  {
+    "id": "cv_download_02",
+    "label_en": "Download 2-page Resume",
+    "label_zh": "",
+    "url": "assets/CV/Longlong_Li_Resume_EN.pdf",
+    "type": "cv_download",
+    "visible": true,
+    "notes": "EN download"
+  },
+  {
+    "id": "cv_download_03",
+    "label_en": "",
+    "label_zh": "下载完整学术简历",
+    "url": "assets/CV/Longlong_Li_Academic_CV_ZH.pdf",
+    "type": "cv_download",
+    "visible": true,
+    "notes": "ZH download"
+  },
+  {
+    "id": "cv_download_04",
+    "label_en": "",
+    "label_zh": "下载 2 页版求职简历",
+    "url": "assets/CV/Longlong_Li_Resume_ZH.pdf",
+    "type": "cv_download",
+    "visible": true,
+    "notes": "ZH download"
+  },
+  {
+    "id": "email",
+    "label_en": "Email",
+    "label_zh": "邮箱",
+    "url": "mailto:lilonglong2000@jnu.ac.kr",
+    "type": "email",
+    "visible": true,
+    "notes": "Website display is assembled with JavaScript"
+  },
+  {
+    "id": "mntl",
+    "label_en": "MNTL",
+    "label_zh": "MNTL 实验室",
+    "url": "https://sites.google.com/view/mntljnu",
+    "type": "lab",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "google_scholar",
+    "label_en": "Google Scholar",
+    "label_zh": "Google Scholar",
+    "url": "https://scholar.google.com/citations?user=eehgHYgAAAAJ&hl=zh-CN",
+    "type": "profile",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "homepage",
+    "label_en": "Homepage",
+    "label_zh": "主页",
+    "url": "https://longlongli.com",
+    "type": "profile",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "orcid",
+    "label_en": "ORCID",
+    "label_zh": "ORCID",
+    "url": "https://orcid.org/0009-0008-4062-5191",
+    "type": "profile",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_001_link",
+    "label_en": "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening",
+    "label_zh": "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening",
+    "url": "https://pubs.acs.org/doi/10.1021/acsnano.4c05365",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_002_link",
+    "label_en": "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue",
+    "label_zh": "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue",
+    "url": "https://www.cell.com/iscience/fulltext/S2589-0042(25)00142-7",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_003_link",
+    "label_en": "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin",
+    "label_zh": "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin",
+    "url": "https://doi.org/10.1016/j.ijbiomac.2025.140449",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_004_link",
+    "label_en": "Dual-sensitized hollow SnO2 nanospheres with rGO and Pd for highly sensitive detection of acetone in exhaled breath",
+    "label_zh": "Dual-sensitized hollow SnO2 nanospheres with rGO and Pd for highly sensitive detection of acetone in exhaled breath",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0169433225006737",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_005_link",
+    "label_en": "Hydrogel-Integrated Biomimetic Hydroxyapatite Scaffolds with Tunable Porosity for Enhanced Curcumin Delivery",
+    "label_zh": "Hydrogel-Integrated Biomimetic Hydroxyapatite Scaffolds with Tunable Porosity for Enhanced Curcumin Delivery",
+    "url": "https://www.sciencedirect.com/science/article/pii/S177322472500975X",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_006_link",
+    "label_en": "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors",
+    "label_zh": "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors",
+    "url": "https://iopscience.iop.org/article/10.1088/1361-6439/adb8f9/meta",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_007_link",
+    "label_en": "InGaN-GaN-MQW-ZnO based e-nose sensors for nitrogen dioxide detection using advanced machine learning approaches",
+    "label_zh": "InGaN-GaN-MQW-ZnO based e-nose sensors for nitrogen dioxide detection using advanced machine learning approaches",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0925400525014261",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_008_link",
+    "label_en": "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces",
+    "label_zh": "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces",
+    "url": "https://link.springer.com/article/10.1007/s40820-026-02103-0",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "pub_009_link",
+    "label_en": "Tilted-angle acoustofluidic separation of live and dead neonatal rat ventricular myocytes using hypotonic cell swelling",
+    "label_zh": "Tilted-angle acoustofluidic separation of live and dead neonatal rat ventricular myocytes using hypotonic cell swelling",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0925400526006970",
+    "type": "publication",
+    "visible": true,
+    "notes": null
+  },
+  {
+    "id": "github",
+    "label_en": "GitHub",
+    "label_zh": "GitHub",
+    "url": null,
+    "type": "profile",
+    "visible": false,
+    "notes": "TODO: no URL currently available on the website"
+  },
+  {
+    "id": "researchgate",
+    "label_en": "ResearchGate",
+    "label_zh": "ResearchGate",
+    "url": null,
+    "type": "profile",
+    "visible": false,
+    "notes": "TODO: no URL currently available on the website"
+  }
+]
