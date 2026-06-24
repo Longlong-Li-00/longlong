@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /tools/
+Disallow: /assets/CV/*.docx
+
+Sitemap: https://longlongli.com/sitemap.xml
