@@ -736,6 +736,42 @@ h2 {
   gap: 14px;
 }
 
+.publication-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 4px 0 18px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.publication-controls button {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--accent);
+  padding: 6px 11px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.publication-controls button.is-active,
+.publication-controls button:hover {
+  border-color: var(--accent);
+  background: rgba(219, 232, 246, 0.72);
+  color: var(--accent-strong);
+}
+
+.pub-year-heading {
+  margin: 8px 0 -2px;
+  color: var(--accent-strong);
+  font-family: "Source Serif 4", "Georgia", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
 .pub-item {
   display: grid;
   grid-template-columns: 44px 1fr;
@@ -789,7 +825,24 @@ h2 {
   margin-top: 2px;
 }
 
-.pub-links a {
+.pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pub-tags span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 3px 8px;
+}
+
+.pub-links a,
+.citation-block summary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -802,8 +855,36 @@ h2 {
   font-weight: 600;
 }
 
-.pub-links a:hover {
+.pub-links a:hover,
+.citation-block summary:hover {
   background: rgba(29, 78, 137, 0.08);
+}
+
+.citation-block {
+  margin-top: 2px;
+}
+
+.citation-block summary {
+  width: fit-content;
+  cursor: pointer;
+  list-style: none;
+}
+
+.citation-block summary::-webkit-details-marker {
+  display: none;
+}
+
+.citation-block pre {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+  color: var(--muted-strong);
+  overflow-x: auto;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  white-space: pre;
 }
 
 .conference-authors {
@@ -1047,6 +1128,27 @@ h2 {
   background: rgba(255, 255, 255, 0.88);
 }
 
+.project-detail-card:has(.project-detail-image) {
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  align-items: start;
+}
+
+.project-detail-image {
+  width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 8px;
+}
+
+.project-detail-content {
+  display: grid;
+  gap: 8px;
+}
+
+.project-detail-card h3,
 .project-detail-card h4 {
   font-family: "Source Serif 4", "Georgia", serif;
   font-size: 1.04rem;
@@ -1243,6 +1345,10 @@ h2 {
   .cv-header-grid,
   .cv-two-column,
   .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-detail-card:has(.project-detail-image) {
     grid-template-columns: 1fr;
   }
 }

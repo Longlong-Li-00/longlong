@@ -1,5 +1,8 @@
 User-agent: *
-Disallow: /gallery.html
-Disallow: /zh/gallery.html
-Disallow: /en/gallery.html
-Disallow: /assets/albums/
+Allow: /
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /tools/
+Disallow: /assets/CV/*.docx
+
+Sitemap: https://longlongli.com/sitemap.xml
