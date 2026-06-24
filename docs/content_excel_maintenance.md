@@ -1,6 +1,6 @@
 # Website Content Excel Maintenance
 
-`data/website_content.xlsx` is a structured snapshot of the content currently published on the personal academic website. It is intended to become the central editing table for a later data-driven website refactor. The current HTML pages do not read from this workbook yet.
+`data/website_content.xlsx` is now the primary structured content source for the personal academic website. The public pages remain static HTML, but the repeated content areas are generated from JSON files created from this workbook.
 
 ## Workbook sheets
 
@@ -77,6 +77,116 @@ Use `TRUE` or `FALSE` in `visible`. Use a unique integer in `order`. Keep image 
 
 The Gallery currently remains filename-driven. Add or rename source images in `assets/albums/` using the existing date-and-title convention, then run the image and gallery generation scripts before regenerating this workbook. The `gallery` sheet records the generated path and source filename; it does not replace the current Gallery build process.
 
+## How the Excel-driven website works
+
+1. Edit `data/website_content.xlsx`.
+2. Run `python tools/generate_site_data.py`.
+3. Review the generated JSON files under `assets/data/`.
+4. Preview the website locally.
+5. Commit the workbook, generated JSON, and page updates together.
+6. GitHub Actions reruns the JSON generation step before deploying GitHub Pages.
+
+The publish chain is:
+
+`data/website_content.xlsx` -> `tools/generate_site_data.py` -> `assets/data/*.json` -> static HTML + `scripts/data-renderer.js`
+
+## Required and controlled fields
+
+### Publications
+
+Required: `id`, `year`, `title_en`, `authors`, `journal`, `type`, `selected`
+
+Allowed `type` values:
+
+- `journal`
+- `review`
+- `manuscript`
+- `other`
+
+Only year filters are rendered on the Publications page. Topic tags may stay in notes or future fields, but they are not exposed in the current UI.
+
+Use `TRUE` in `selected` when a publication should appear in homepage or CV selected-publication views.
+
+### Patents
+
+Required: `id`, `title_en`, `title_zh`, `inventors`, `applicant`, `patent_type`
+
+At least one of `patent_number` or `application_number` must be present.
+
+Allowed `patent_type` values:
+
+- `granted_invention`
+- `published_invention_application`
+- `utility_model`
+- `other`
+
+Patent descriptions are intentionally not rendered on the Patents page.
+
+### Conferences
+
+Required: `id`, `year`, `title_en`, `authors`, `conference`, `presentation_type`
+
+Allowed `presentation_type` values:
+
+- `oral`
+- `poster`
+
+The Conferences page groups records by `presentation_type`, so oral/poster classification should be maintained in Excel.
+
+### Awards
+
+Required: `id`, `year`, `name_en`, `category`
+
+Recommended `category` values:
+
+- `scholarship`
+- `academic_honor`
+- `competition`
+- `other`
+
+The Awards page groups categories as:
+
+- `scholarship` -> Scholarships & Fellowships
+- `academic_honor` -> Academic Honors
+- `competition` and `other` -> Competitions & Other Awards
+
+Award level information such as national or provincial status belongs in `level` or `description_*`, not as a separate page section.
+
+### Projects
+
+Required: `id`, `title_en`, `title_zh`, `visible`, `order`
+
+Use `TRUE` or `FALSE` in `visible`.
+
+- `visible = TRUE`: project is rendered on `projects.html` / `zh/projects.html`
+- `visible = FALSE`: project stays in Excel but is hidden from the Projects page
+
+Homepage featured projects currently use the first visible rows after sorting by `order`.
+
+### Gallery
+
+Required: `id`, `image`
+
+Recommended fields: `date`, `title_en`, `title_zh`, `source_filename`
+
+The website reads `assets/data/gallery.json`, which is generated from the workbook. The existing image optimization and filename-driven helper scripts remain available, but the published page now uses the workbook-derived JSON.
+
+### CV
+
+Required: `section`, `item_id`, `order`
+
+Keep section names stable because the CV renderer groups by these keys:
+
+- `profile`
+- `education`
+- `research_experience`
+- `technical_skills`
+- `selected_projects`
+- `selected_publications`
+- `selected_conferences`
+- `patent_overview`
+- `awards`
+
 ## Regenerating the workbook
 
 Run:
@@ -87,4 +197,8 @@ python tools/extract_site_content_to_excel.py
 
 The extraction script parses the current HTML and Gallery JSON, validates critical fields, and invokes the workbook builder. It prints record counts and warnings for optional missing fields.
 
-The workbook is currently an extraction and maintenance artifact only. A future refactor can generate HTML or JSON from it after field names, validation rules, and bilingual content have been reviewed. Until that refactor is implemented, update both the public HTML and this workbook when changing published content.
+Use the extraction script only when you need to rebuild the workbook from the currently published site snapshot. For normal maintenance after this refactor, edit the workbook directly and regenerate JSON with:
+
+```powershell
+python tools/generate_site_data.py
+```

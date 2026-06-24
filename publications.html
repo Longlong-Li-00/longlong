@@ -58,8 +58,9 @@
             <div class="section-stack">
               <div class="subsection">
                 <h3 class="subsection-title">Journal Articles</h3>
+                <div data-publications-controls></div>
                 <div class="publications">
-                  <ol class="pub-list">
+                  <ol class="pub-list" data-publications-list>
                     <li class="pub-item">
                       <span class="pub-index">[1]</span>
                       <span class="pub-content">
@@ -155,7 +156,9 @@
               </div>
               <div class="subsection">
                 <h3 class="subsection-title">Manuscripts Under Review / In Preparation</h3>
-                <p class="section-intro">No additional manuscripts are listed in the current public website content.</p>
+                <div data-manuscripts-root>
+                  <p class="section-intro">No additional manuscripts are listed in the current public website content.</p>
+                </div>
               </div>
             </div>
           </section>
@@ -174,6 +177,7 @@
       gtag('config', 'G-XXXXXXXXXX');
     </script>
     -->
+    <script src="scripts/data-renderer.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

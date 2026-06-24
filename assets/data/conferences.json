@@ -1,0 +1,122 @@
+[
+  {
+    "id": "conf_004",
+    "year": 2026,
+    "title_en": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
+    "title_zh": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
+    "authors": "Haolan Sun, Longlong Li, Eung-Sam Kim, Bong-Kee Lee, Dong-Weon Lee",
+    "conference": "IEEE MEMS 2026",
+    "location": "Salzburg, Austria",
+    "presentation_type": "oral",
+    "link": "https://ieeexplore.ieee.org/abstract/document/11419567",
+    "notes": null
+  },
+  {
+    "id": "conf_003",
+    "year": 2025,
+    "title_en": "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and Mea to Monitor Contractility and Field Potential in Cardiomyocytes",
+    "title_zh": "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and Mea to Monitor Contractility and Field Potential in Cardiomyocytes",
+    "authors": "Haolan Sun, Longlong Li, Dong-Weon Lee",
+    "conference": "IEEE MEMS 2025",
+    "location": "Kaohsiung, Taiwan",
+    "presentation_type": "oral",
+    "link": "https://ieeexplore.ieee.org/abstract/document/10917809",
+    "notes": null
+  },
+  {
+    "id": "conf_009",
+    "year": 2025,
+    "title_en": "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with integrated Sensor",
+    "title_zh": "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with integrated Sensor",
+    "authors": "Ke Liu, Haolan Sun, Longlong Li, Dong-Weon Lee",
+    "conference": "MicroTAS 2025",
+    "location": "Adelaide, Australia",
+    "presentation_type": "poster",
+    "link": null,
+    "notes": null
+  },
+  {
+    "id": "conf_010",
+    "year": 2025,
+    "title_en": "Enhancement of cardiomyocyte microenvironment and functional assessment using through-hole structures with integrated polymer cantilevers",
+    "title_zh": "Enhancement of cardiomyocyte microenvironment and functional assessment using through-hole structures with integrated polymer cantilevers",
+    "authors": "Fusong Li, Haolan Sun, Longlong Li, Jong-Yun Kim, Dong-Weon Lee",
+    "conference": "MicroTAS 2025",
+    "location": "Adelaide, Australia",
+    "presentation_type": "poster",
+    "link": null,
+    "notes": null
+  },
+  {
+    "id": "conf_008",
+    "year": 2025,
+    "title_en": "Integrated Bioelectronic Platform Utilizing PEDOT: PSS Strain Sensors for Real-Time Mechanostimulation and Sensing",
+    "title_zh": "Integrated Bioelectronic Platform Utilizing PEDOT: PSS Strain Sensors for Real-Time Mechanostimulation and Sensing",
+    "authors": "Zhuji Qu, Jongyun Kim, Haolan Sun, Longlong Li, Dong-Weon Lee",
+    "conference": "IEEE SENSORS 2025",
+    "location": "Vancouver, Canada",
+    "presentation_type": "poster",
+    "link": "https://ieeexplore.ieee.org/abstract/document/11331195",
+    "notes": null
+  },
+  {
+    "id": "conf_007",
+    "year": 2025,
+    "title_en": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
+    "title_zh": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
+    "authors": "Longlong Li, Fatima Tufail, Haolan Sun, Jongyun Kim, Hee-Gyeong Yi, Dong-Weon Lee",
+    "conference": "IEEE SENSORS 2025",
+    "location": "Vancouver, Canada",
+    "presentation_type": "poster",
+    "link": "https://ieeexplore.ieee.org/abstract/document/11330375",
+    "notes": null
+  },
+  {
+    "id": "conf_002",
+    "year": 2024,
+    "title_en": "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields",
+    "title_zh": "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields",
+    "authors": "Longlong Li, Haolan Sun, Jong-Yun Kim, Yun-Jin Jeong, Bong-Kee Lee, Eung-Sam Kim, Dong-Weon Lee",
+    "conference": "IEEE NANOMED 2024",
+    "location": "Hawaii, USA",
+    "presentation_type": "oral",
+    "link": "https://ieeexplore.ieee.org/abstract/document/10946052",
+    "notes": null
+  },
+  {
+    "id": "conf_006",
+    "year": 2024,
+    "title_en": "MONITORING OF DRUG-IMFACTED CARDIOMYOCYTES CONTRACTILITY USING PI MICROCANTILEVER STRUCTURES WITH NANO-SILICON STRAIN SENSOR",
+    "title_zh": "MONITORING OF DRUG-IMFACTED CARDIOMYOCYTES CONTRACTILITY USING PI MICROCANTILEVER STRUCTURES WITH NANO-SILICON STRAIN SENSOR",
+    "authors": "Haolan Sun, Longlong Li, Dong-Weon Lee",
+    "conference": "MicroTAS 2024",
+    "location": "Montreal, Canada",
+    "presentation_type": "poster",
+    "link": null,
+    "notes": null
+  },
+  {
+    "id": "conf_005",
+    "year": 2024,
+    "title_en": "Polymer Cantilever Integrated with a Full-Bridge Sensor for Continuous Wireless Measurement of Cardiomyocyte Contractility",
+    "title_zh": "Polymer Cantilever Integrated with a Full-Bridge Sensor for Continuous Wireless Measurement of Cardiomyocyte Contractility",
+    "authors": "Ke Liu, Haolan Sun, Longlong Li, Dong-Weon Lee",
+    "conference": "MicroTAS 2024",
+    "location": "Montreal, Canada",
+    "presentation_type": "poster",
+    "link": null,
+    "notes": null
+  },
+  {
+    "id": "conf_001",
+    "year": 2023,
+    "title_en": "The hybrid cantilever of conductive graphene and su-8 for improving the maturity and electrical coupling of cardiomyocytes",
+    "title_zh": "The hybrid cantilever of conductive graphene and su-8 for improving the maturity and electrical coupling of cardiomyocytes",
+    "authors": "Longlong Li, Jong-Yun Kim, Daeyun Lim, Chil-Hyoung Lee, and Dong-Weon Lee",
+    "conference": "MicroTAS 2023",
+    "location": "Katowice, Poland",
+    "presentation_type": "oral",
+    "link": null,
+    "notes": null
+  }
+]

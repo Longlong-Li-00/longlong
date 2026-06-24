@@ -36,13 +36,13 @@
           </div>
         </div>
         <div class="hero-content">
-          <div class="hero-header">
+          <div class="hero-header" data-home-identity>
             <h1>Longlong Li</h1>
             <p class="hero-title">PhD Student</p>
             <p class="hero-affiliation">Department of Mechanical Engineering, Chonnam National University</p>
             <p class="hero-location">Gwangju, South Korea</p>
           </div>
-          <p class="hero-tagline">
+          <p class="hero-tagline" data-home-tagline>
             I develop MEMS-enabled and bioelectronic sensing platforms for engineered cardiac tissues, with an emphasis on multimodal electromechanical recording and drug cardiotoxicity evaluation.
           </p>
           <div class="hero-actions hero-primary-links">
@@ -51,7 +51,7 @@
             <a class="button outline" href="cv.html">CV</a>
             <a class="button outline" href="#contact" data-analytics-event="open_contact" data-analytics-category="navigation" data-analytics-label="hero_contact">Contact</a>
           </div>
-          <div class="hero-profile-links">
+          <div class="hero-profile-links" data-home-profile-links>
             <a
               href="#"
               data-email-link
@@ -78,7 +78,7 @@
           </div>
           <div class="hero-interests">
             <p class="eyebrow">Research Interests</p>
-            <ul>
+            <ul data-home-interests>
               <li>BioMEMS sensing platforms</li>
               <li>Engineered cardiac tissue</li>
               <li>Multimodal recording</li>
@@ -106,7 +106,7 @@
           <div class="nav-switch"><a href="zh/">中文</a></div>
         </nav>
 
-        <main class="content">
+        <main class="content" data-home-root>
           <div class="section-wrapper">
             <section id="research" class="section">
               <div class="section-header">
@@ -147,7 +147,7 @@
                 </div>
                 <a class="section-link" href="projects.html" data-analytics-event="open_projects" data-analytics-category="navigation" data-analytics-label="home_projects_archive">View all projects</a>
               </div>
-              <div class="project-grid">
+              <div class="project-grid" data-home-projects>
                 <article class="project-card">
                   <div class="project-visual">
                     <img src="assets/Project/Hypoxia model.webp" alt="Hypoxia model figure" loading="lazy" />
@@ -186,7 +186,7 @@
                 <a class="section-link" href="publications.html">View all publications</a>
               </div>
               <div class="publications">
-                <ol class="pub-list">
+                <ol class="pub-list" data-home-publications>
                   <li class="pub-item">
                     <span class="pub-index">[1]</span>
                     <span class="pub-content">
@@ -238,7 +238,7 @@
                 <h2>Academic Highlights</h2>
                 <p class="section-intro">A quick view of the full academic record documented across the dedicated archive pages.</p>
               </div>
-              <div class="highlights-grid">
+              <div class="highlights-grid" data-home-highlights>
                 <a class="highlight-card" href="publications.html">
                   <span class="highlight-value">9</span>
                   <span class="highlight-label">Publications</span>
@@ -269,7 +269,7 @@
                 <a class="section-link" href="cv.html">View full CV</a>
               </div>
               <div class="contact-shortcut">
-                <div class="contact">
+                <div class="contact" data-home-contact>
                   <div class="contact-item">
                     <div class="contact-label">Email</div>
                     <a
@@ -289,7 +289,7 @@
                     <span>Gwangju, South Korea</span>
                   </div>
                 </div>
-                <div class="mini-links">
+                <div class="mini-links" data-home-contact-links>
                   <a href="https://scholar.google.com/citations?user=eehgHYgAAAAJ&amp;hl=zh-CN" target="_blank" rel="noreferrer" data-analytics-event="open_google_scholar" data-analytics-category="profile_link" data-analytics-label="contact_google_scholar">Google Scholar</a>
                   <a href="https://orcid.org/0009-0008-4062-5191" target="_blank" rel="noreferrer" data-analytics-event="open_orcid" data-analytics-category="profile_link" data-analytics-label="contact_orcid">ORCID</a>
                   <a href="https://longlongli.com" target="_blank" rel="noreferrer" data-analytics-event="open_homepage" data-analytics-category="profile_link" data-analytics-label="contact_homepage">Homepage</a>
@@ -313,6 +313,7 @@
       gtag('config', 'G-XXXXXXXXXX');
     </script>
     -->
+    <script src="scripts/data-renderer.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

@@ -1,0 +1,405 @@
+{
+  "awards": [
+    {
+      "item_id": "cv_award_001",
+      "year_or_period": "2025",
+      "title_en": "BK21 Fellowship Scholarship",
+      "title_zh": "BK21 Fellowship Scholarship",
+      "organization": null,
+      "description_en": "Academic Fellowship",
+      "description_zh": "Academic Fellowship",
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_award_002",
+      "year_or_period": "2025",
+      "title_en": "RLRC Outstanding Graduate Student",
+      "title_zh": "RLRC Outstanding Graduate Student",
+      "organization": null,
+      "description_en": "Graduate Recognition",
+      "description_zh": "Graduate Recognition",
+      "order": 2,
+      "notes": null
+    },
+    {
+      "item_id": "cv_award_003",
+      "year_or_period": "2021",
+      "title_en": "China National Scholarship",
+      "title_zh": "中国国家奖学金",
+      "organization": null,
+      "description_en": "National Scholarship",
+      "description_zh": "National Scholarship",
+      "order": 3,
+      "notes": null
+    },
+    {
+      "item_id": "cv_award_004",
+      "year_or_period": "2019",
+      "title_en": "Zhejiang Provincial Government Scholarship",
+      "title_zh": "浙江省政府奖学金",
+      "organization": null,
+      "description_en": "Provincial Scholarship",
+      "description_zh": "Provincial Scholarship",
+      "order": 4,
+      "notes": null
+    }
+  ],
+  "education": [
+    {
+      "item_id": "cv_education_001",
+      "year_or_period": "2022-Present",
+      "title_en": "Ph.D. in Mechanical Engineering, Chonnam National University, Gwangju, South Korea",
+      "title_zh": "全南国立大学，机械工程博士，韩国 光州",
+      "organization": null,
+      "description_en": null,
+      "description_zh": null,
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_education_002",
+      "year_or_period": "2018-2022",
+      "title_en": "B.Eng. in Mechanical Engineering, Wenzhou University, Wenzhou, China",
+      "title_zh": "温州大学，机械工程本科，中国 温州",
+      "organization": null,
+      "description_en": null,
+      "description_zh": null,
+      "order": 2,
+      "notes": null
+    }
+  ],
+  "patent_overview": [
+    {
+      "item_id": "cv_patent_summary",
+      "year_or_period": null,
+      "title_en": "Patent Summary",
+      "title_zh": "专利概览",
+      "organization": null,
+      "description_en": "15 Total Patents | 4 Invention Patents | 3 Granted Inventions | 11 Utility Models",
+      "description_zh": "15 专利总数 | 4 发明专利 | 3 授权发明 | 11 实用新型",
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_patent_001",
+      "year_or_period": null,
+      "title_en": "Vertical-Folding-Based Clothes Folding Machine",
+      "title_zh": "一种基于纵向折叠的叠衣机",
+      "organization": null,
+      "description_en": "Vertical-Folding-Based Clothes Folding Machine Granted Invention Patent, CN113186699B, 2023-02-07.",
+      "description_zh": "一种基于纵向折叠的叠衣机 授权发明专利，CN113186699B，2023-02-07。",
+      "order": 2,
+      "notes": null
+    },
+    {
+      "item_id": "cv_patent_002",
+      "year_or_period": null,
+      "title_en": "Household Intelligent Toy Storage Robot",
+      "title_zh": "一种家用玩具智能收纳机器人",
+      "organization": null,
+      "description_en": "Household Intelligent Toy Storage Robot Granted Invention Patent, CN112407980B, 2022-01-18.",
+      "description_zh": "一种家用玩具智能收纳机器人 授权发明专利，CN112407980B，2022-01-18。",
+      "order": 3,
+      "notes": null
+    },
+    {
+      "item_id": "cv_patent_003",
+      "year_or_period": null,
+      "title_en": "Automatic Potato Harvester",
+      "title_zh": "一种自动马铃薯收获机",
+      "organization": null,
+      "description_en": "Automatic Potato Harvester Utility Model Patent, CN216415123U, 2022-05-03.",
+      "description_zh": "一种自动马铃薯收获机 实用新型专利，CN216415123U，2022-05-03。",
+      "order": 4,
+      "notes": null
+    },
+    {
+      "item_id": "cv_patent_004",
+      "year_or_period": null,
+      "title_en": "Intelligent Launch-and-Recovery Management Device for UAV Swarms",
+      "title_zh": "一种无人机集群的智能收发管理装置",
+      "organization": null,
+      "description_en": "Intelligent Launch-and-Recovery Management Device for UAV Swarms Utility Model Patent, CN216269980U, 2022-04-12.",
+      "description_zh": "一种无人机集群的智能收发管理装置 实用新型专利，CN216269980U，2022-04-12。",
+      "order": 5,
+      "notes": null
+    }
+  ],
+  "profile": [
+    {
+      "item_id": "cv_profile_001",
+      "year_or_period": null,
+      "title_en": "Profile",
+      "title_zh": "个人简介",
+      "organization": null,
+      "description_en": "PhD student specializing in BioMEMS, multimodal biosensors, engineered cardiac tissue monitoring, and drug cardiotoxicity evaluation. Experienced in MEMS device design, microfabrication, cell and tissue culture, sensing system integration, and multimodal biosignal analysis. My research focuses on integrating strain sensors, microelectrode arrays, and 3D bioelectronic platforms for synchronized and quantitative assessment of cardiac tissue function.",
+      "description_zh": "博士研究生，研究方向聚焦于 BioMEMS、多模态生物传感器、工程化心脏组织监测和药物心脏毒性评价。具备 MEMS 器件设计、微纳加工、细胞与组织培养、传感系统搭建和多模态生物信号分析经验。研究工作围绕应变传感器、微电极阵列和 3D 生物电子平台展开，目标是实现心肌组织机械收缩与电活动的同步、长期和定量检测。",
+      "order": 1,
+      "notes": null
+    }
+  ],
+  "research_experience": [
+    {
+      "item_id": "cv_research_001",
+      "year_or_period": null,
+      "title_en": "Research experience 1",
+      "title_zh": "科研经历 1",
+      "organization": null,
+      "description_en": "Designed and developed BioMEMS-based multimodal sensing platforms for engineered cardiac tissues.",
+      "description_zh": "面向工程化心脏组织设计并开发基于 BioMEMS 的多模态传感平台。",
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_research_002",
+      "year_or_period": null,
+      "title_en": "Research experience 2",
+      "title_zh": "科研经历 2",
+      "organization": null,
+      "description_en": "Integrated strain sensors and microelectrode arrays to monitor mechanical contraction and electrical activity in cardiac tissue models.",
+      "description_zh": "集成应变传感器与微电极阵列，实现心肌组织机械收缩与电活动的同步监测。",
+      "order": 2,
+      "notes": null
+    },
+    {
+      "item_id": "cv_research_003",
+      "year_or_period": null,
+      "title_en": "Research experience 3",
+      "title_zh": "科研经历 3",
+      "organization": null,
+      "description_en": "Established 3D engineered heart tissue culture and drug stimulation workflows for cardiotoxicity screening and disease modeling.",
+      "description_zh": "建立 3D 工程化心脏组织培养与药物刺激流程，用于药物心脏毒性筛选和疾病模型研究。",
+      "order": 3,
+      "notes": null
+    },
+    {
+      "item_id": "cv_research_004",
+      "year_or_period": null,
+      "title_en": "Research experience 4",
+      "title_zh": "科研经历 4",
+      "organization": null,
+      "description_en": "Developed MATLAB / Python-based analysis workflows for extracting contraction amplitude, beating frequency, field potential features, and electromechanical coupling parameters.",
+      "description_zh": "开发 MATLAB / Python 信号分析流程，用于提取收缩幅值、搏动频率、场电位特征和机电耦合参数。",
+      "order": 4,
+      "notes": null
+    },
+    {
+      "item_id": "cv_research_005",
+      "year_or_period": null,
+      "title_en": "Research experience 5",
+      "title_zh": "科研经历 5",
+      "organization": null,
+      "description_en": "Built experimental measurement systems involving low-noise signal acquisition, microscopy, sensor calibration, and hardware integration.",
+      "description_zh": "搭建包含低噪声信号采集、显微成像、传感器标定和硬件集成在内的实验测量系统。",
+      "order": 5,
+      "notes": null
+    }
+  ],
+  "selected_conferences": [
+    {
+      "item_id": "cv_conference_001",
+      "year_or_period": "2024",
+      "title_en": "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields",
+      "title_zh": "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields",
+      "organization": "IEEE NANOMED 2024, Hawaii, USA",
+      "description_en": "IEEE NANOMED 2024, Hawaii, USA | Longlong Li, Haolan Sun, Jong-Yun Kim, Yun-Jin Jeong, Bong-Kee Lee, Eung-Sam Kim, Dong-Weon Lee",
+      "description_zh": "IEEE NANOMED 2024, Hawaii, USA | Longlong Li, Haolan Sun, Jong-Yun Kim, Yun-Jin Jeong, Bong-Kee Lee, Eung-Sam Kim, Dong-Weon Lee",
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_conference_002",
+      "year_or_period": "2025",
+      "title_en": "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and Mea to Monitor Contractility and Field Potential in Cardiomyocytes",
+      "title_zh": "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and Mea to Monitor Contractility and Field Potential in Cardiomyocytes",
+      "organization": "IEEE MEMS 2025, Kaohsiung, Taiwan",
+      "description_en": "IEEE MEMS 2025, Kaohsiung, Taiwan | Haolan Sun, Longlong Li, Dong-Weon Lee",
+      "description_zh": "IEEE MEMS 2025, Kaohsiung, Taiwan | Haolan Sun, Longlong Li, Dong-Weon Lee",
+      "order": 2,
+      "notes": null
+    },
+    {
+      "item_id": "cv_conference_003",
+      "year_or_period": "2025",
+      "title_en": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
+      "title_zh": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
+      "organization": "IEEE SENSORS 2025, Vancouver, Canada",
+      "description_en": "IEEE SENSORS 2025, Vancouver, Canada | Longlong Li, Fatima Tufail, Haolan Sun, Jongyun Kim, Hee-Gyeong Yi, Dong-Weon Lee",
+      "description_zh": "IEEE SENSORS 2025, Vancouver, Canada | Longlong Li, Fatima Tufail, Haolan Sun, Jongyun Kim, Hee-Gyeong Yi, Dong-Weon Lee",
+      "order": 3,
+      "notes": null
+    },
+    {
+      "item_id": "cv_conference_004",
+      "year_or_period": "2025",
+      "title_en": "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with integrated Sensor",
+      "title_zh": "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with integrated Sensor",
+      "organization": "MicroTAS 2025, Adelaide, Australia",
+      "description_en": "MicroTAS 2025, Adelaide, Australia | Ke Liu, Haolan Sun, Longlong Li, Dong-Weon Lee",
+      "description_zh": "MicroTAS 2025, Adelaide, Australia | Ke Liu, Haolan Sun, Longlong Li, Dong-Weon Lee",
+      "order": 4,
+      "notes": null
+    },
+    {
+      "item_id": "cv_conference_005",
+      "year_or_period": "2026",
+      "title_en": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
+      "title_zh": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
+      "organization": "IEEE MEMS 2026, Salzburg, Austria",
+      "description_en": "IEEE MEMS 2026, Salzburg, Austria | Haolan Sun, Longlong Li, Eung-Sam Kim, Bong-Kee Lee, Dong-Weon Lee",
+      "description_zh": "IEEE MEMS 2026, Salzburg, Austria | Haolan Sun, Longlong Li, Eung-Sam Kim, Bong-Kee Lee, Dong-Weon Lee",
+      "order": 5,
+      "notes": null
+    }
+  ],
+  "selected_projects": [
+    {
+      "item_id": "cv_project_001",
+      "year_or_period": "2026.03-Present",
+      "title_en": "Bioinspired Hypoxic Cardiac Model and Electromechanical Evaluation Platform",
+      "title_zh": "仿生心脏缺氧模型与机电评估平台",
+      "organization": "MNTL",
+      "description_en": "Developed an in vitro cardiac hypoxia model combined with multimodal electromechanical readouts. | Integrated mechanical contraction sensing and electrical activity recording for functional assessment of engineered cardiac tissues. | Applied the platform to evaluate cardiac tissue response under disease-relevant microenvironmental conditions.",
+      "description_zh": "开发结合多模态机电读出的体外心脏缺氧模型。 | 集成机械收缩检测与电活动记录，用于工程化心脏组织功能评估。 | 用于疾病相关微环境下心脏组织响应的定量分析。",
+      "order": 1,
+      "notes": "EN metadata: 2026.03-Present | MNTL | Role: Researcher and platform developer; ZH metadata: 2026.03-至今 | MNTL | 角色：研究者与平台开发者"
+    },
+    {
+      "item_id": "cv_project_002",
+      "year_or_period": "2024.03-2026.03",
+      "title_en": "High-Throughput Drug Toxicity Screening Platform Based on 3D Cardiac Tissues",
+      "title_zh": "基于 3D 心脏组织的高通量药物毒理筛选平台",
+      "organization": "MNTL",
+      "description_en": "Designed and optimized a 3D cardiac tissue-based sensing platform for drug cardiotoxicity evaluation. | Integrated strain-based mechanical sensing and electrophysiological readouts. | Supported long-term monitoring and multiparametric analysis of drug-induced functional responses.",
+      "description_zh": "设计并优化面向药物心脏毒性评价的 3D 心脏组织传感平台。 | 整合基于应变的机械读出与电生理读出。 | 支持药物诱导功能响应的长期监测和多参数分析。",
+      "order": 2,
+      "notes": "EN metadata: 2024.03-2026.03 | MNTL | Role: Researcher and system integrator; ZH metadata: 2024.03-2026.03 | MNTL | 角色：研究者与系统集成者"
+    },
+    {
+      "item_id": "cv_project_003",
+      "year_or_period": "2022.09-2024.03",
+      "title_en": "Graphene-Conductive Microenvironment for Cardiomyocyte Maturation and Electrophysiological Communication",
+      "title_zh": "石墨烯导电微环境对心肌细胞电生理通讯与成熟的调控机制",
+      "organization": "MNTL",
+      "description_en": "Investigated conductive microenvironment effects on cardiomyocyte maturation and intercellular communication. | Developed graphene/SU-8-based platforms for cardiac tissue functional enhancement. | Contributed to journal publication and conference outputs.",
+      "description_zh": "研究导电微环境对心肌细胞成熟和细胞间通讯的影响。 | 开发基于 graphene / SU-8 的平台用于提升组织功能表现。 | 支撑期刊论文与国际会议成果输出。",
+      "order": 3,
+      "notes": "EN metadata: 2022.09-2024.03 | MNTL | Role: Platform developer and experimental researcher; ZH metadata: 2022.09-2024.03 | MNTL | 角色：平台开发者与实验研究者"
+    }
+  ],
+  "selected_publications": [
+    {
+      "item_id": "cv_publication_001",
+      "year_or_period": "2024",
+      "title_en": "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening",
+      "title_zh": "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening",
+      "organization": "ACS Nano",
+      "description_en": "Longlong Li, Arunkumar Shanmugasundaram, Jongyun Kim, Nomin-Erdene Oyunbaatar, Pooja P. Kanade, Seong-Eung Cha, Daeyun Lim, Chil-Hyoung Lee, Young-Baek Kim, Bong-Kee Lee, Eung-Sam Kim, Dong-Weon Lee. First author. 2024, 18(49): 33293-33309.",
+      "description_zh": "Longlong Li, Arunkumar Shanmugasundaram, Jongyun Kim, Nomin-Erdene Oyunbaatar, Pooja P. Kanade, Seong-Eung Cha, Daeyun Lim, Chil-Hyoung Lee, Young-Baek Kim, Bong-Kee Lee, Eung-Sam Kim, Dong-Weon Lee. First author. 2024, 18(49): 33293-33309.",
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_publication_002",
+      "year_or_period": "2025",
+      "title_en": "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue",
+      "title_zh": "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue",
+      "organization": "iScience",
+      "description_en": "Mst Zobaida Akter, Fatima Tufail, Ashfaq Ahmad, Yoon Wha Oh, Jung Min Kim, Seoyeon Kim, Md Mehedee Hasan, Longlong Li, Dong-Weon Lee, Yong Sook Kim, Su-jin Lee, Hyung-Seok Kim, Youngkeun Ahn, Yeong-Jin Choi, Hee-Gyeong Yi. 2025, 28(3).",
+      "description_zh": "Mst Zobaida Akter, Fatima Tufail, Ashfaq Ahmad, Yoon Wha Oh, Jung Min Kim, Seoyeon Kim, Md Mehedee Hasan, Longlong Li, Dong-Weon Lee, Yong Sook Kim, Su-jin Lee, Hyung-Seok Kim, Youngkeun Ahn, Yeong-Jin Choi, Hee-Gyeong Yi. 2025, 28(3).",
+      "order": 2,
+      "notes": null
+    },
+    {
+      "item_id": "cv_publication_003",
+      "year_or_period": "2025",
+      "title_en": "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin",
+      "title_zh": "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin",
+      "organization": "International Journal of Biological Macromolecules",
+      "description_en": "Kamrun Nahar Fatema, Longlong Li, Khurshid Ahmad, Jongyun Kim, Dong-Weon Lee. 2025, 301: 140449.",
+      "description_zh": "Kamrun Nahar Fatema, Longlong Li, Khurshid Ahmad, Jongyun Kim, Dong-Weon Lee. 2025, 301: 140449.",
+      "order": 3,
+      "notes": null
+    },
+    {
+      "item_id": "cv_publication_004",
+      "year_or_period": "2025",
+      "title_en": "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors",
+      "title_zh": "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors",
+      "organization": "Journal of Micromechanics and Microengineering",
+      "description_en": "Jongyun Kim, Arunkumar Shanmugasundaram, Longlong Li, Zhuo Qu, Eung-Sam Kim, Bong-Kee Lee, Dong-Weon Lee. 2025, 35(4): 045002.",
+      "description_zh": "Jongyun Kim, Arunkumar Shanmugasundaram, Longlong Li, Zhuo Qu, Eung-Sam Kim, Bong-Kee Lee, Dong-Weon Lee. 2025, 35(4): 045002.",
+      "order": 4,
+      "notes": null
+    },
+    {
+      "item_id": "cv_publication_005",
+      "year_or_period": "2026",
+      "title_en": "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces",
+      "title_zh": "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces",
+      "organization": "Nano-Micro Letters",
+      "description_en": "Karthikeyan Munirathinam, Longlong Li, Arunkumar Shanmugasundaram, Jongsung Park, Dong-Weon Lee. 2026, 18(1): 251.",
+      "description_zh": "Karthikeyan Munirathinam, Longlong Li, Arunkumar Shanmugasundaram, Jongsung Park, Dong-Weon Lee. 2026, 18(1): 251.",
+      "order": 5,
+      "notes": null
+    }
+  ],
+  "technical_skills": [
+    {
+      "item_id": "cv_skill_001",
+      "year_or_period": null,
+      "title_en": "Microfabrication",
+      "title_zh": "微纳制造",
+      "organization": null,
+      "description_en": "Photolithography, metal deposition, SU-8 / PI processing, MEMS sensor fabrication, device packaging, sensor characterization.",
+      "description_zh": "光刻、金属沉积、SU-8 / PI 工艺、MEMS 传感器制备、器件封装、传感器表征。",
+      "order": 1,
+      "notes": null
+    },
+    {
+      "item_id": "cv_skill_002",
+      "year_or_period": null,
+      "title_en": "Biosensing",
+      "title_zh": "生物传感",
+      "organization": null,
+      "description_en": "Strain sensors, microelectrode arrays, electromechanical monitoring, low-noise signal acquisition, sensor calibration.",
+      "description_zh": "应变传感器、微电极阵列、机电同步监测、低噪声信号采集、传感器标定。",
+      "order": 2,
+      "notes": null
+    },
+    {
+      "item_id": "cv_skill_003",
+      "year_or_period": null,
+      "title_en": "Cell & Tissue Engineering",
+      "title_zh": "细胞与组织工程",
+      "organization": null,
+      "description_en": "NRVM / hiPSC-CMs culture, engineered heart tissue construction, collagen / dECM bioinks, drug stimulation experiments, immunostaining.",
+      "description_zh": "NRVM / hiPSC-CMs 培养、工程化心脏组织构建、胶原 / dECM 生物墨水、药物刺激实验、免疫染色。",
+      "order": 3,
+      "notes": null
+    },
+    {
+      "item_id": "cv_skill_004",
+      "year_or_period": null,
+      "title_en": "Data Analysis",
+      "title_zh": "数据分析",
+      "organization": null,
+      "description_en": "MATLAB, Python, cardiac signal processing, feature extraction, visualization, statistical analysis.",
+      "description_zh": "MATLAB、Python、心脏信号处理、特征提取、可视化、统计分析。",
+      "order": 4,
+      "notes": null
+    },
+    {
+      "item_id": "cv_skill_005",
+      "year_or_period": null,
+      "title_en": "System Integration",
+      "title_zh": "系统集成",
+      "organization": null,
+      "description_en": "DAQ systems, amplifier circuits, microscopy, automated measurement platforms, prototype development.",
+      "description_zh": "DAQ 系统、放大电路、显微成像、自动化测量平台、实验原型机开发。",
+      "order": 5,
+      "notes": null
+    }
+  ]
+}

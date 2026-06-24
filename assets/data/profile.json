@@ -1,0 +1,64 @@
+{
+  "name": {
+    "en": "Longlong Li",
+    "zh": "李龙龙",
+    "notes": null
+  },
+  "position": {
+    "en": "PhD Student",
+    "zh": "博士研究生",
+    "notes": null
+  },
+  "affiliation": {
+    "en": "Department of Mechanical Engineering, Chonnam National University",
+    "zh": "全南国立大学 机械工程系",
+    "notes": null
+  },
+  "location": {
+    "en": "Gwangju, South Korea",
+    "zh": "韩国 光州",
+    "notes": null
+  },
+  "email": {
+    "en": "lilonglong2000@jnu.ac.kr",
+    "zh": "lilonglong2000@jnu.ac.kr",
+    "notes": "Displayed on the website through JavaScript assembly"
+  },
+  "homepage": {
+    "en": "https://longlongli.com",
+    "zh": "https://longlongli.com",
+    "notes": null
+  },
+  "research_statement": {
+    "en": "I develop MEMS-enabled and bioelectronic sensing platforms for engineered cardiac tissues, with an emphasis on multimodal electromechanical recording and drug cardiotoxicity evaluation.",
+    "zh": "我主要开发面向工程化心肌组织的 MEMS 与生物电子传感平台，聚焦多模态电机械记录以及药物心脏毒性评估。",
+    "notes": null
+  },
+  "research_keywords": {
+    "en": "BioMEMS sensing platforms; Engineered cardiac tissue; Multimodal recording; Drug cardiotoxicity screening",
+    "zh": "BioMEMS 传感平台; 工程化心脏组织; 多模态记录; 药物心脏毒性筛选",
+    "notes": null,
+    "en_list": [
+      "BioMEMS sensing platforms",
+      "Engineered cardiac tissue",
+      "Multimodal recording",
+      "Drug cardiotoxicity screening"
+    ],
+    "zh_list": [
+      "BioMEMS 传感平台",
+      "工程化心脏组织",
+      "多模态记录",
+      "药物心脏毒性筛选"
+    ]
+  },
+  "short_bio": {
+    "en": "PhD student specializing in BioMEMS, multimodal biosensors, engineered cardiac tissue monitoring, and drug cardiotoxicity evaluation.",
+    "zh": "博士研究生，研究方向聚焦于 BioMEMS、多模态生物传感器、工程化心脏组织监测和药物心脏毒性评价。",
+    "notes": null
+  },
+  "long_bio": {
+    "en": "PhD student specializing in BioMEMS, multimodal biosensors, engineered cardiac tissue monitoring, and drug cardiotoxicity evaluation. Experienced in MEMS device design, microfabrication, cell and tissue culture, sensing system integration, and multimodal biosignal analysis. My research focuses on integrating strain sensors, microelectrode arrays, and 3D bioelectronic platforms for synchronized and quantitative assessment of cardiac tissue function.",
+    "zh": "博士研究生，研究方向聚焦于 BioMEMS、多模态生物传感器、工程化心脏组织监测和药物心脏毒性评价。具备 MEMS 器件设计、微纳加工、细胞与组织培养、传感系统搭建和多模态生物信号分析经验。研究工作围绕应变传感器、微电极阵列和 3D 生物电子平台展开，目标是实现心肌组织机械收缩与电活动的同步、长期和定量检测。",
+    "notes": "Source: CV profile section"
+  }
+}
