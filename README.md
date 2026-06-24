@@ -1,33 +1,86 @@
 # Longlong Li Academic Website
 
-This repository is a bilingual personal academic website for Longlong Li, built with plain HTML, CSS, and a small JavaScript helper.
+This repository contains the bilingual personal academic website of Longlong Li. The site is a static GitHub Pages website with an Excel-driven content workflow for structured academic records.
 
-## Pages
+## Project overview
 
-- `index.html`: default English homepage
-- `en/index.html`: English homepage copy
-- `zh/index.html`: Chinese homepage
-- `gallery.html`: English gallery page
-- `zh/gallery.html`: Chinese gallery page
-- `cv.html`: English CV page
-- `zh/cv.html`: Chinese CV page
+The website is maintained as a static site:
 
-## Customization
+- English pages are in the project root.
+- Chinese pages are in `zh/`.
+- Shared rendering logic is handled by JavaScript.
+- Structured content is maintained in Excel and converted into generated JSON files.
 
-- Update homepage content in `index.html` and `zh/index.html`
-- Add your real profile links where the placeholder social buttons are currently shown
-- Replace the portrait by updating `assets/Longlong.jpg`
-- Add future gallery images to `assets/albums` using the naming format `YYYY-MM-DD_Title.jpg` or `YYYYMMDD_标题.jpg`
-- Run `python tools/generate_gallery_data.py` locally if you want to preview new gallery items before pushing
-- Run `python tools/optimize_images.py` before generating gallery data if you want local WebP previews for gallery and project images
-- Run `python tools/update_seo_metadata.py` after changing page titles, descriptions, or canonical URLs
+## Content maintenance workflow
+
+The current content pipeline is:
+
+```text
+data/website_content.xlsx
+→ tools/generate_site_data.py
+→ assets/data/*.json
+→ scripts/data-renderer.js
+→ HTML pages
+```
+
+For normal updates, edit the Excel workbook first and then regenerate the JSON files.
+
+## Local preview
+
+Run the following commands from the project root:
+
+```bash
+python tools\generate_site_data.py
+python -m http.server 8020
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8020/index.html
+```
+
+You can also use:
+
+```bash
+preview-local.cmd
+```
+
+## Common maintenance notes
+
+- Do not preview the site by double-clicking HTML files. The website loads JSON with `fetch()`, so it requires a local HTTP server.
+- After editing `data/website_content.xlsx`, you must rerun `python tools\generate_site_data.py`.
+- Do not manually edit `assets/data/*.json`. These files are generated outputs.
+- If a webpage does not reflect your update, first check whether the corresponding JSON file in `assets/data/` was regenerated.
+- If a keyword exists in Excel but you are not sure whether it reached the generated data, run:
+
+```bash
+python tools\check_content_update.py "keyword"
+```
 
 ## Deployment
 
-This site is deployed as a static GitHub Pages site.
+The website is deployed with GitHub Pages.
 
-- The gallery data file `assets/gallery-data.json` is generated automatically during deployment
-- The included GitHub Actions workflow optimizes images and regenerates the gallery list from `assets/albums` on every push to `main` or `master`
-- Repeated navigation, analytics snippets, and SEO metadata are still stored in static HTML files. Keep changes synchronized across English and Chinese pages, or migrate to templates later if the site grows further.
+The GitHub Actions workflow will:
 
-If you want to use a custom domain later, create a new `CNAME` file with your own domain before deploying.
+1. Install Python dependencies from `requirements.txt`
+2. Run the site data generation workflow
+3. Upload the static site as the GitHub Pages artifact
+
+The site remains a static website. There is no backend or CMS.
+
+## High-level folder overview
+
+- `data/`: Excel content source
+- `assets/data/`: generated JSON payloads
+- `assets/Project/`: project images
+- `assets/CV/`: downloadable CV and resume files
+- `assets/albums/` and `assets/albums-optimized/`: gallery images
+- `scripts/`: frontend rendering logic
+- `tools/`: content generation and maintenance tools
+- `docs/`: maintenance and deployment documentation
+
+## Important restriction
+
+Do not move or rename assets casually. If image or document paths change, the related Excel rows, generated JSON, HTML references, JavaScript logic, and deployment workflow may all need to be updated together.
