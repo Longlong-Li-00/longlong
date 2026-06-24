@@ -24,3 +24,7 @@ build/
 
 temp/
 tmp/
+
+data/website_content_extracted.json
+data/website_content_previews/
+data/*.inspect.ndjson
