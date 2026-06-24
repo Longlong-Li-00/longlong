@@ -1,5 +1,17 @@
 [
   {
+    "id": "award_006",
+    "year": 2025,
+    "name_en": "Best Poster Presentation Award, KSS 2025",
+    "name_zh": "Best Poster Presentation Award, KSS 2025",
+    "category": "academic_honor",
+    "level": "Conference paper award",
+    "organization": "KSS 2025",
+    "description_en": "Awarded for an best conference paper presented at KSS 2025.",
+    "description_zh": "因在 KSS 2025 发表的优秀会议论文获奖。",
+    "notes": null
+  },
+  {
     "id": "award_001",
     "year": 2025,
     "name_en": "BK21 Fellowship Scholarship",
@@ -36,7 +48,7 @@
     "notes": null
   },
   {
-    "id": "award_006",
+    "id": "award_007",
     "year": 2021,
     "name_en": "18th Zhejiang Mechanical Design Competition (Kitchen Machinery)",
     "name_zh": "浙江省第十八届机械设计大赛（厨房机械）",
@@ -60,7 +72,7 @@
     "notes": null
   },
   {
-    "id": "award_008",
+    "id": "award_009",
     "year": 2020,
     "name_en": "12th National College Student Mathematics Competition",
     "name_zh": "第十二届全国大学生数学竞赛",
@@ -72,7 +84,7 @@
     "notes": null
   },
   {
-    "id": "award_009",
+    "id": "award_010",
     "year": 2020,
     "name_en": "17th Zhejiang Mechanical Design Competition (Smart Home)",
     "name_zh": "浙江省第十七届机械设计大赛（智能家居）",
@@ -84,7 +96,7 @@
     "notes": null
   },
   {
-    "id": "award_007",
+    "id": "award_008",
     "year": 2020,
     "name_en": "3rd China University Intelligent Robot Creativity Competition",
     "name_zh": "中国第三届高校智能机器人创意大赛",
@@ -96,7 +108,7 @@
     "notes": null
   },
   {
-    "id": "award_010",
+    "id": "award_011",
     "year": 2019,
     "name_en": "15th Zhejiang University Games (Roller Hockey)",
     "name_zh": "浙江省第十五届大学生运动会（轮滑球）",
@@ -108,7 +120,7 @@
     "notes": null
   },
   {
-    "id": "award_011",
+    "id": "award_012",
     "year": 2019,
     "name_en": "1st Zhejiang Intelligent Robot Creativity Competition",
     "name_zh": "浙江省首届智能机器人创意大赛（循迹越障小车）",

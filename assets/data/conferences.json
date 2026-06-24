@@ -1,6 +1,6 @@
 [
   {
-    "id": "conf_004",
+    "id": "conf_005",
     "year": 2026,
     "title_en": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
     "title_zh": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
@@ -9,6 +9,30 @@
     "location": "Salzburg, Austria",
     "presentation_type": "oral",
     "link": "https://ieeexplore.ieee.org/abstract/document/11419567",
+    "notes": null
+  },
+  {
+    "id": "conf_006",
+    "year": 2026,
+    "title_en": "Real-Time Electromechanical Monitoring of Engineered Heart Tissue Responses to Cardiac Drugs",
+    "title_zh": "Real-Time Electromechanical Monitoring of Engineered Heart Tissue Responses to Cardiac Drugs",
+    "authors": "Longlong Li, Haolan Sun, Jong-Yun Kim, Dong-Weon Lee",
+    "conference": "KSPE 2026",
+    "location": "Jeju, Korea",
+    "presentation_type": "oral",
+    "link": null,
+    "notes": null
+  },
+  {
+    "id": "conf_004",
+    "year": 2025,
+    "title_en": "3D Cardiac Tissue Platform for Monitoring Contractility and Assessing Cardiotoxicity",
+    "title_zh": "3D Cardiac Tissue Platform for Monitoring Contractility and Assessing Cardiotoxicity",
+    "authors": "Longlong Li, Haolan Sun, Jong-Yun Kim, Dong-Weon Lee",
+    "conference": "KMEMS 2025",
+    "location": "Jeju, Korea",
+    "presentation_type": "oral",
+    "link": null,
     "notes": null
   },
   {
@@ -24,7 +48,7 @@
     "notes": null
   },
   {
-    "id": "conf_009",
+    "id": "conf_011",
     "year": 2025,
     "title_en": "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with integrated Sensor",
     "title_zh": "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with integrated Sensor",
@@ -36,7 +60,7 @@
     "notes": null
   },
   {
-    "id": "conf_010",
+    "id": "conf_012",
     "year": 2025,
     "title_en": "Enhancement of cardiomyocyte microenvironment and functional assessment using through-hole structures with integrated polymer cantilevers",
     "title_zh": "Enhancement of cardiomyocyte microenvironment and functional assessment using through-hole structures with integrated polymer cantilevers",
@@ -48,7 +72,7 @@
     "notes": null
   },
   {
-    "id": "conf_008",
+    "id": "conf_010",
     "year": 2025,
     "title_en": "Integrated Bioelectronic Platform Utilizing PEDOT: PSS Strain Sensors for Real-Time Mechanostimulation and Sensing",
     "title_zh": "Integrated Bioelectronic Platform Utilizing PEDOT: PSS Strain Sensors for Real-Time Mechanostimulation and Sensing",
@@ -60,7 +84,7 @@
     "notes": null
   },
   {
-    "id": "conf_007",
+    "id": "conf_009",
     "year": 2025,
     "title_en": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
     "title_zh": "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues",
@@ -84,7 +108,7 @@
     "notes": null
   },
   {
-    "id": "conf_006",
+    "id": "conf_008",
     "year": 2024,
     "title_en": "MONITORING OF DRUG-IMFACTED CARDIOMYOCYTES CONTRACTILITY USING PI MICROCANTILEVER STRUCTURES WITH NANO-SILICON STRAIN SENSOR",
     "title_zh": "MONITORING OF DRUG-IMFACTED CARDIOMYOCYTES CONTRACTILITY USING PI MICROCANTILEVER STRUCTURES WITH NANO-SILICON STRAIN SENSOR",
@@ -96,7 +120,7 @@
     "notes": null
   },
   {
-    "id": "conf_005",
+    "id": "conf_007",
     "year": 2024,
     "title_en": "Polymer Cantilever Integrated with a Full-Bridge Sensor for Continuous Wireless Measurement of Cardiomyocyte Contractility",
     "title_zh": "Polymer Cantilever Integrated with a Full-Bridge Sensor for Continuous Wireless Measurement of Cardiomyocyte Contractility",
