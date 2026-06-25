@@ -31,10 +31,8 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate gallery data
-        run: |
-          python tools/optimize_images.py
-          python tools/generate_gallery_data.py
+      - name: Optimize images
+        run: python tools/optimize_images.py
 
       - name: Generate site data
         run: python tools/generate_site_data.py

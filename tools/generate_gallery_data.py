@@ -8,6 +8,8 @@ from pathlib import Path
 from urllib.parse import quote
 
 
+# Legacy utility: the website now uses assets/data/gallery.json generated from
+# data/website_content.xlsx. Keep this script only for historical recovery.
 ROOT = Path(__file__).resolve().parents[1]
 ALBUMS_DIR = ROOT / "assets" / "albums"
 ALBUMS_OPTIMIZED_DIR = ROOT / "assets" / "albums-optimized"
