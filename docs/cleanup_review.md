@@ -17,10 +17,13 @@ The following files or folders were intentionally kept in place during this phas
 
 - `en/index.html`
 - `assets/gallery-data.json`
+- `archive/CV/legacy/`
 - `temp/`
 - `tmp/`
 
-These items may be obsolete or partially duplicated, but they are still referenced by tracked files or may still reflect local intermediate workflow state. They are not safe to delete without a later coordinated cleanup step.
+These items may be obsolete, partially duplicated, historically useful, or still tied to local intermediate workflow state. They are not safe to delete without a later coordinated cleanup step.
+
+`archive/CV/legacy/` contains four older general CV files that were confirmed unused by the website and moved out of `assets/CV/`. They are preserved for historical recovery and must not be deleted without later manual confirmation.
 
 ## Files requiring manual review
 
@@ -28,6 +31,7 @@ These items may be obsolete or partially duplicated, but they are still referenc
 |---|---|---|---|
 | `en/index.html` | Appears to duplicate the root English homepage route, but is still referenced by `sitemap.xml` and `tools/update_seo_metadata.py`. | Keep for now. Review whether `/en/` is still a supported public route before archiving or removing. | Medium |
 | `assets/gallery-data.json` | Legacy gallery data file retained for historical recovery and the old HTML-to-Excel extraction utility. Current pages and deployment no longer depend on it. | Keep for now. Consider archive or removal only after the extraction workflow is retired or updated. | Medium |
+| `archive/CV/legacy/` | Contains the archived English/Chinese DOCX/PDF pairs for the older general three-page CV. No website, Excel, JSON, or generator reference points to these files. | Keep archived. Delete only after explicit manual confirmation. | Low |
 | `temp/cv_render_en` | Empty local intermediate render directory from earlier CV export or render workflow. | Keep for now. If no tool depends on it, move to archive later or remove in a dedicated local-artifact cleanup phase. | Low |
 | `temp/cv_render_zh` | Empty local intermediate render directory from earlier CV export or render workflow. | Keep for now. If no tool depends on it, move to archive later or remove in a dedicated local-artifact cleanup phase. | Low |
 | `tmp/render_resume_en` | Empty local intermediate render directory from an earlier resume rendering workflow. | Keep for now. If no tool depends on it, move to archive later or remove in a dedicated local-artifact cleanup phase. | Low |
@@ -60,3 +64,14 @@ Potential later cleanup or archive candidates, not acted on in this phase:
 - `tmp/`
 - legacy Gallery helper flow around `tools/generate_gallery_data.py` and `tools/extract_site_content_to_excel.py`
 - legacy or standalone SEO helper flow around `tools/update_seo_metadata.py`
+
+## Archived legacy CV files
+
+The following files were moved from `assets/CV/` to `archive/CV/legacy/`:
+
+- `Longlong_Li_CV_EN.docx`
+- `Longlong_Li_CV_EN.pdf`
+- `Longlong_Li_CV_ZH.docx`
+- `Longlong_Li_CV_ZH.pdf`
+
+The current website continues to use the Academic CV and two-page Resume PDFs under `assets/CV/`. No download link was changed.
