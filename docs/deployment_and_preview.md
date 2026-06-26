@@ -90,6 +90,8 @@ If the local machine lacks a Word / LibreOffice / PDF rendering environment, DOC
 
 The website is deployed by GitHub Actions after pushing committed changes.
 
+The canonical deployment branch is now `main`.
+
 The deployment workflow should:
 
 1. Install Python dependencies
@@ -99,6 +101,36 @@ The deployment workflow should:
 The current deployment file is:
 
 - `.github/workflows/deploy-pages.yml`
+
+## Normal future update workflow
+
+Use the following workflow for ordinary content updates:
+
+```bash
+git checkout main
+git pull origin main
+
+# edit data/website_content.xlsx
+
+python tools\generate_site_data.py
+python tools\generate_cv_docs.py
+
+python -m http.server 8020
+
+git status
+git add .
+git commit -m "content: update website data"
+git push origin main
+```
+
+Important notes:
+
+- Do not continue using `master` for new content updates.
+- Do not push to `master`.
+- Do not force push.
+- Do not manually edit `assets/data/*.json`; edit `data/website_content.xlsx` and regenerate JSON.
+- If CV content changes, regenerate CV documents before commit.
+- GitHub Actions deploys from `main`.
 
 ## Common problems
 

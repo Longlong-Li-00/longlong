@@ -176,3 +176,35 @@ The current `project-structure-cleanup` branch is suitable for merge into the de
 - Updated stale audit documentation that still referenced older CV record counts and missing CNAME status.
 
 No blocking issue remains in the validated static website data flow, Gallery source, CV generation, local page availability, or GitHub Pages workflow.
+
+## Post-deployment maintenance note
+
+After deployment integration, the canonical deployment branch is `main`.
+
+Normal future maintenance should follow:
+
+```bash
+git checkout main
+git pull origin main
+
+# edit data/website_content.xlsx
+
+python tools\generate_site_data.py
+python tools\generate_cv_docs.py
+
+python -m http.server 8020
+
+git status
+git add .
+git commit -m "content: update website data"
+git push origin main
+```
+
+Important notes:
+
+- Do not continue using `master` for new content updates.
+- Do not push to `master`.
+- Do not force push.
+- Do not manually edit `assets/data/*.json`; edit `data/website_content.xlsx` and regenerate JSON.
+- If CV content changes, regenerate CV documents before commit.
+- GitHub Actions deploys from `main`.
