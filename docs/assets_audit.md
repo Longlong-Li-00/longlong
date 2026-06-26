@@ -130,7 +130,7 @@ These files are deployed with the repository root by the GitHub Pages workflow. 
 - `.github/workflows/deploy-pages.yml` runs `tools/optimize_images.py` and `tools/generate_site_data.py`, then uploads the repository root as the Pages artifact.
 - `robots.txt` excludes `assets/CV/*.docx` from crawler access.
 - `sitemap.xml` contains page URLs only and does not reference individual assets.
-- No root `CNAME` file is currently present in this checkout.
+- Root `CNAME` is present and points to `longlongli.com` for GitHub Pages custom-domain deployment.
 
 ## Archived CV files
 

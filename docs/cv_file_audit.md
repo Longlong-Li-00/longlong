@@ -52,7 +52,7 @@ The following four files had no confirmed reference in HTML, JavaScript, JSON, E
 - `archive/CV/legacy/Longlong_Li_CV_ZH.docx`
 - `archive/CV/legacy/Longlong_Li_CV_ZH.pdf`
 
-Content inspection shows that they are coherent three-page CVs rather than empty placeholders. They include education, research experience, projects, nine publications, ten conferences, a patent overview, four awards, and technical skills.
+Content inspection shows that they are coherent three-page CVs rather than empty placeholders. They include education, research experience, projects, nine publications, twelve conferences, a patent overview, twelve awards, and technical skills.
 
 Their modified time is four days earlier than the Academic CV and Resume set. The current `tools/generate_cv_docs.py` defines output targets only for `Longlong_Li_Academic_CV_*` and `Longlong_Li_Resume_*`; it does not regenerate `Longlong_Li_CV_*`. They are retained in the archive for historical recovery and should not be deleted without later manual confirmation.
 
