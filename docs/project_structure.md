@@ -46,6 +46,8 @@ These files or folders are expected to be edited manually:
 
 The downloadable CV files are not edited manually in normal maintenance. They are generated into `assets/CV/` by `tools/generate_cv_docs.py` after `assets/data/*.json` has been refreshed.
 
+Conference oral/poster classification is maintained in the `presentation_type` column of the Excel `conferences` sheet. Generated JSON, website pages, and CV documents should all consume that field directly rather than applying output-layer overrides.
+
 ## Automatically generated files
 
 These files are generated outputs and should usually not be edited manually:

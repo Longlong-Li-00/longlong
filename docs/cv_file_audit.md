@@ -110,7 +110,7 @@ Text verification confirmed that both English and Chinese Academic CV DOCX/PDF f
 
 The two-page Resume intentionally contains selected records, so a lower item count remains expected.
 
-One data classification note remains: `assets/data/conferences.json` currently marks six records as `oral`, while the approved CV classification uses four oral presentations and treats all other conference records as poster presentations. This is handled inside `tools/generate_cv_docs.py` without modifying Excel or generated JSON.
+Conference presentation type is now maintained at the source-data level in the Excel `conferences` sheet. The generated `assets/data/conferences.json`, website Conferences pages, and downloadable CV files all use the same `presentation_type` values: four oral presentations and eight poster presentations. `tools/generate_cv_docs.py` no longer overrides conference classification in the output layer.
 
 ## Recommended actions
 

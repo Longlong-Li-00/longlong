@@ -37,10 +37,6 @@ JSON_FILES = {
     "projects": DATA_DIR / "projects.json",
 }
 
-# Keep the CV output aligned with the approved conference classification without
-# modifying the Excel-generated JSON source in this cleanup phase.
-ORAL_PRESENTATION_IDS = {"conf_001", "conf_002", "conf_003", "conf_005"}
-
 
 def load_json(path: Path) -> Any:
     if not path.exists():
@@ -80,10 +76,6 @@ def sort_by_year(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
         return (-year, str(item.get("id") or item.get("item_id") or item.get("title_en") or ""))
 
     return sorted(items, key=key)
-
-
-def is_oral_presentation(conf: dict[str, Any]) -> bool:
-    return str(conf.get("id") or "") in ORAL_PRESENTATION_IDS
 
 
 def publication_info(pub: dict[str, Any]) -> str:
@@ -252,8 +244,8 @@ def build_sections(data: dict[str, Any], lang: str, academic: bool) -> list[dict
 
     if academic:
         sections.append({"title": labels["publications"], "items": [format_publication(pub, lang) for pub in publications]})
-        oral = [conf for conf in conferences if is_oral_presentation(conf)]
-        poster = [conf for conf in conferences if not is_oral_presentation(conf)]
+        oral = [conf for conf in conferences if clean_text(conf.get("presentation_type")).lower() == "oral"]
+        poster = [conf for conf in conferences if clean_text(conf.get("presentation_type")).lower() != "oral"]
         sections.append({"title": labels["oral"], "items": [format_conference(conf, lang) for conf in oral]})
         sections.append({"title": labels["poster"], "items": [format_conference(conf, lang) for conf in poster]})
         sections.append(
@@ -595,15 +587,12 @@ def build_pdf(data: dict[str, Any]) -> Path:
 
 def print_counts(site_data: dict[str, Any]) -> None:
     conferences = site_data["conferences"]
-    source_oral = sum(1 for item in conferences if clean_text(item.get("presentation_type")).lower() == "oral")
-    oral = sum(1 for item in conferences if is_oral_presentation(item))
+    oral = sum(1 for item in conferences if clean_text(item.get("presentation_type")).lower() == "oral")
     poster = len(conferences) - oral
     patents = site_data["patents"]
     print("Loaded website JSON data:")
     print(f"- publications: {len(site_data['publications'])}")
-    print(f"- conferences: {len(conferences)} ({oral} oral, {poster} poster in generated CV)")
-    if source_oral != oral:
-        print(f"  note: source JSON marks {source_oral} records as oral; CV output uses the approved 4-record oral classification.")
+    print(f"- conferences: {len(conferences)} ({oral} oral, {poster} poster)")
     print(f"- awards: {len(site_data['awards'])}")
     print(f"- patents: {len(patents)}")
 
