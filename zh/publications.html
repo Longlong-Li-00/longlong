@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>李龙龙 | 论文发表</title>
-    <meta name="description" content="李龙龙的论文发表页面。" />
+    <meta name="description" content="李龙龙的期刊论文记录，涵盖 BioMEMS、心脏组织工程、生物传感、生物材料和相关生物医学工程方向。" />
+    <link rel="canonical" href="https://longlongli.com/zh/publications.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="李龙龙 | 论文发表" />
+    <meta property="og:description" content="李龙龙的期刊论文记录，涵盖 BioMEMS、心脏组织工程、生物传感、生物材料和相关生物医学工程方向。" />
+    <meta property="og:url" content="https://longlongli.com/zh/publications.html" />
+    <meta property="og:image" content="https://longlongli.com/assets/Project/High-throughput%20screening%20platform.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="李龙龙 | 论文发表" />
+    <meta name="twitter:description" content="李龙龙的期刊论文记录，涵盖 BioMEMS、心脏组织工程、生物传感、生物材料和相关生物医学工程方向。" />
+    <meta name="twitter:image" content="https://longlongli.com/assets/Project/High-throughput%20screening%20platform.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +31,7 @@
           <ul class="nav-list">
             <li><a href="index.html#about" data-nav-key="about">关于我</a></li>
             <li><a href="index.html#research" data-nav-key="research">研究方向</a></li>
-            <li><a href="index.html#projects" data-nav-key="projects">项目</a></li>
+            <li><a href="projects.html" data-nav-key="projects">项目</a></li>
             <li><a href="publications.html" data-nav-key="publications">论文发表</a></li>
             <li><a href="conferences.html" data-nav-key="conferences">学术会议</a></li>
             <li><a href="patents.html" data-nav-key="patents">专利</a></li>
@@ -46,8 +56,9 @@
             <div class="section-stack">
               <div class="subsection">
                 <h3 class="subsection-title">期刊论文</h3>
+                <div data-publications-controls></div>
                 <div class="publications">
-                  <ol class="pub-list">
+                  <ol class="pub-list" data-publications-list>
                     <li class="pub-item">
                       <span class="pub-index">[1]</span>
                       <span class="pub-content">
@@ -143,7 +154,9 @@
               </div>
               <div class="subsection">
                 <h3 class="subsection-title">在投或准备中稿件</h3>
-                <p class="section-intro">当前公开网站内容中暂无额外列出的在投或准备中稿件。</p>
+                <div data-manuscripts-root>
+                  <p class="section-intro">当前公开网站内容中暂无额外列出的在投或准备中稿件。</p>
+                </div>
               </div>
             </div>
           </section>
@@ -162,6 +175,7 @@
       gtag('config', 'G-XXXXXXXXXX');
     </script>
     -->
+    <script src="../scripts/data-renderer.js"></script>
     <script src="../scripts.js"></script>
   </body>
 </html>

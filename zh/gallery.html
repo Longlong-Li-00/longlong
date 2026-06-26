@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>李龙龙 | 图集</title>
-    <meta name="description" content="李龙龙在学习、科研、会议与生活中的时间线图集。" />
+    <meta name="description" content="李龙龙学习、科研、会议和阶段性经历的时间线图集。" />
+    <link rel="canonical" href="https://longlongli.com/zh/gallery.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="李龙龙 | 图集" />
+    <meta property="og:description" content="李龙龙学习、科研、会议和阶段性经历的时间线图集。" />
+    <meta property="og:url" content="https://longlongli.com/zh/gallery.html" />
+    <meta property="og:image" content="https://longlongli.com/assets/Project/High-throughput%20screening%20platform.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="李龙龙 | 图集" />
+    <meta name="twitter:description" content="李龙龙学习、科研、会议和阶段性经历的时间线图集。" />
+    <meta name="twitter:image" content="https://longlongli.com/assets/Project/High-throughput%20screening%20platform.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +31,7 @@
           <ul class="nav-list">
             <li><a href="index.html#about" data-nav-key="about">关于我</a></li>
             <li><a href="index.html#research" data-nav-key="research">研究方向</a></li>
-            <li><a href="index.html#projects" data-nav-key="projects">项目</a></li>
+            <li><a href="projects.html" data-nav-key="projects">项目</a></li>
             <li><a href="publications.html" data-nav-key="publications">论文发表</a></li>
             <li><a href="conferences.html" data-nav-key="conferences">学术会议</a></li>
             <li><a href="patents.html" data-nav-key="patents">专利</a></li>
@@ -33,7 +43,7 @@
           <div class="nav-switch"><a href="../gallery.html">English</a></div>
         </nav>
 
-        <main class="content">
+        <main class="content" data-home-root>
           <header class="section archive-hero">
             <p class="archive-kicker">Visual Archive</p>
             <div class="section-header">
@@ -47,7 +57,7 @@
           <div class="section-wrapper">
             <section class="section">
               <!-- 当前图集同时保留了科研相关与个人阶段性记录图片，后续可继续细分。 -->
-              <div class="gallery-timeline" data-gallery-root data-gallery-source="../assets/gallery-data.json" data-gallery-prefix="../"></div>
+              <div class="gallery-timeline" data-gallery-root></div>
             </section>
           </div>
         </main>
@@ -65,6 +75,7 @@
       gtag('config', 'G-XXXXXXXXXX');
     </script>
     -->
+    <script src="../scripts/data-renderer.js"></script>
     <script src="../scripts.js"></script>
   </body>
 </html>

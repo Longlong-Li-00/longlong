@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import json
+import re
+from html import escape
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -20,364 +23,352 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
+DATA_DIR = ASSETS / "data"
 CV_ASSETS = ASSETS / "CV"
 
-
-FULL_PUBLICATIONS_EN = [
-    "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening. ACS Nano 18(49): 33293-33309, 2024.",
-    "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue. iScience 28(3), 2025.",
-    "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin. International Journal of Biological Macromolecules 301: 140449, 2025.",
-    "Dual-sensitized hollow SnO2 nanospheres with rGO and Pd for highly sensitive detection of acetone in exhaled breath. Applied Surface Science 696: 162959, 2025.",
-    "Hydrogel-Integrated Biomimetic Hydroxyapatite Scaffolds with Tunable Porosity for Enhanced Curcumin Delivery. Journal of Drug Delivery Science and Technology, 107572, 2025.",
-    "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors. Journal of Micromechanics and Microengineering 35(4): 045002, 2025.",
-    "InGaN-GaN-MQW-ZnO based e-nose sensors for nitrogen dioxide detection using advanced machine learning approaches. Sensors and Actuators B: Chemical, 138650, 2025.",
-    "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces. Nano-Micro Letters 18(1): 251, 2026.",
-    "Tilted-angle acoustofluidic separation of live and dead neonatal rat ventricular myocytes using hypotonic cell swelling. Sensors and Actuators B: Chemical, 2026.",
-]
-
-FULL_PUBLICATIONS_ZH = [
-    "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening. ACS Nano 18(49): 33293-33309, 2024。",
-    "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue. iScience 28(3), 2025。",
-    "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin. International Journal of Biological Macromolecules 301: 140449, 2025。",
-    "Dual-sensitized hollow SnO2 nanospheres with rGO and Pd for highly sensitive detection of acetone in exhaled breath. Applied Surface Science 696: 162959, 2025。",
-    "Hydrogel-Integrated Biomimetic Hydroxyapatite Scaffolds with Tunable Porosity for Enhanced Curcumin Delivery. Journal of Drug Delivery Science and Technology, 107572, 2025。",
-    "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors. Journal of Micromechanics and Microengineering 35(4): 045002, 2025。",
-    "InGaN-GaN-MQW-ZnO based e-nose sensors for nitrogen dioxide detection using advanced machine learning approaches. Sensors and Actuators B: Chemical, 138650, 2025。",
-    "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces. Nano-Micro Letters 18(1): 251, 2026。",
-    "Tilted-angle acoustofluidic separation of live and dead neonatal rat ventricular myocytes using hypotonic cell swelling. Sensors and Actuators B: Chemical, 2026。",
-]
-
-FULL_CONFERENCES_EN = [
-    "The hybrid cantilever of conductive graphene and SU-8 for improving the maturity and electrical coupling of cardiomyocytes. MicroTAS 2023, Katowice, Poland.",
-    "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields. IEEE NANOMED 2024, Hawaii, USA.",
-    "Polymer Cantilever Integrated with a Full-Bridge Sensor for Continuous Wireless Measurement of Cardiomyocyte Contractility. MicroTAS 2024, Montreal, Canada.",
-    "Monitoring of drug-impacted cardiomyocytes contractility using PI microcantilever structures with nano-silicon strain sensor. MicroTAS 2024, Montreal, Canada.",
-    "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and MEA to Monitor Contractility and Field Potential in Cardiomyocytes. IEEE MEMS 2025, Kaohsiung, Taiwan.",
-    "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues. IEEE SENSORS 2025, Vancouver, Canada.",
-    "Integrated Bioelectronic Platform Utilizing PEDOT:PSS Strain Sensors for Real-Time Mechanostimulation and Sensing. IEEE SENSORS 2025, Vancouver, Canada.",
-    "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with Integrated Sensor. MicroTAS 2025, Adelaide, Australia.",
-    "Enhancement of cardiomyocyte microenvironment and functional assessment using through-hole structures with integrated polymer cantilevers. MicroTAS 2025, Adelaide, Australia.",
-    "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing. IEEE MEMS 2026, Salzburg, Austria.",
-]
-
-FULL_CONFERENCES_ZH = [
-    "The hybrid cantilever of conductive graphene and SU-8 for improving the maturity and electrical coupling of cardiomyocytes. MicroTAS 2023, Katowice, Poland。",
-    "Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields. IEEE NANOMED 2024, Hawaii, USA。",
-    "Polymer Cantilever Integrated with a Full-Bridge Sensor for Continuous Wireless Measurement of Cardiomyocyte Contractility. MicroTAS 2024, Montreal, Canada。",
-    "Monitoring of drug-impacted cardiomyocytes contractility using PI microcantilever structures with nano-silicon strain sensor. MicroTAS 2024, Montreal, Canada。",
-    "A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and MEA to Monitor Contractility and Field Potential in Cardiomyocytes. IEEE MEMS 2025, Kaohsiung, Taiwan。",
-    "Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues. IEEE SENSORS 2025, Vancouver, Canada。",
-    "Integrated Bioelectronic Platform Utilizing PEDOT:PSS Strain Sensors for Real-Time Mechanostimulation and Sensing. IEEE SENSORS 2025, Vancouver, Canada。",
-    "Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with Integrated Sensor. MicroTAS 2025, Adelaide, Australia。",
-    "Enhancement of cardiomyocyte microenvironment and functional assessment using through-hole structures with integrated polymer cantilevers. MicroTAS 2025, Adelaide, Australia。",
-    "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing. IEEE MEMS 2026, Salzburg, Austria。",
-]
-
-FULL_PATENTS_EN = [
-    "Automatic Potato Harvester. Invention Patent Application, CN113875385A / 202111383414.3, filed 2021-11-22, published 2022-01-04.",
-    "Vertical-Folding-Based Clothes Folding Machine. Granted Invention Patent, CN113186699B / 202110624021.0, granted 2023-02-07.",
-    "Household Intelligent Toy Storage Robot. Granted Invention Patent, CN112407980B / 202011170715.3, granted 2022-01-18.",
-    "Zinc Alloy Dross-Skimming Robot and Working Method. Granted Invention Patent, CN111923063B / 202010801270.8, granted 2021-07-16.",
-    "Intelligent Launch-and-Recovery Management Device for UAV Swarms. Utility Model Patent, CN216269980U / 202123168608.X, granted 2022-04-12.",
-    "Traction Device for Potato Harvesters. Utility Model Patent, CN216232634U / 202122864096.4, granted 2022-04-08.",
-    "Potato-Soil Separation Device for Potato Harvesters. Utility Model Patent, CN216253977U / 202122864125.7, granted 2022-04-12.",
-    "Potato Digging Device. Utility Model Patent, CN216313996U / 202122864112.X, granted 2022-04-19.",
-    "Automatic Potato Harvester. Utility Model Patent, CN216415123U / 202122859852.4, granted 2022-05-03.",
-    "Trash Bin Based on Cam-Track Bag Closing and Heat Sealing. Utility Model Patent, CN216234167U / 202122813075.X, granted 2022-04-08.",
-    "Telescopic Rotating Arm for Folding and Rolling in a Clothes Folding Machine. Utility Model Patent, CN215163984U / 202121243359.3, granted 2021-12-14.",
-    "Cart-Bucket Turning Mechanism for Dumping Objects. Utility Model Patent, CN213443970U / 202022431595.X, granted 2021-06-15.",
-    "Synchronous Multi-Scissor Lifting Device for Object Lifting. Utility Model Patent, CN213446006U / 202022431602.6, granted 2021-06-15.",
-    "Timing-Belt Toy Collection Mechanism for a Household Intelligent Toy Storage Robot. Utility Model Patent, CN213536204U / 202022431641.6, granted 2021-06-25.",
-    "Zinc Alloy Dross-Skimming Robot. Utility Model Patent, CN212763486U / 202021656863.1, granted 2021-03-23.",
-]
-
-FULL_PATENTS_ZH = [
-    "自动马铃薯收获机。发明专利申请，CN113875385A / 202111383414.3，申请日 2021-11-22，公布日 2022-01-04。",
-    "一种基于纵向折叠的叠衣机。授权发明专利，CN113186699B / 202110624021.0，授权公告日 2023-02-07。",
-    "一种家用玩具智能收纳机器人。授权发明专利，CN112407980B / 202011170715.3，授权公告日 2022-01-18。",
-    "一种锌合金扒渣机器人及其工作方法。授权发明专利，CN111923063B / 202010801270.8，授权公告日 2021-07-16。",
-    "一种无人机集群的智能收发管理装置。实用新型专利，CN216269980U / 202123168608.X，授权公告日 2022-04-12。",
-    "用于马铃薯收获机的牵引装置。实用新型专利，CN216232634U / 202122864096.4，授权公告日 2022-04-08。",
-    "用于马铃薯收获机的薯土分离装置。实用新型专利，CN216253977U / 202122864125.7，授权公告日 2022-04-12。",
-    "马铃薯挖掘装置。实用新型专利，CN216313996U / 202122864112.X，授权公告日 2022-04-19。",
-    "一种自动马铃薯收获机。实用新型专利，CN216415123U / 202122859852.4，授权公告日 2022-05-03。",
-    "基于凸轮轨道收口热封的垃圾桶。实用新型专利，CN216234167U / 202122813075.X，授权公告日 2022-04-08。",
-    "一种用于叠衣机的对折打卷伸缩转臂。实用新型专利，CN215163984U / 202121243359.3，授权公告日 2021-12-14。",
-    "一种用于倾倒物体的车兜翻转机构。实用新型专利，CN213443970U / 202022431595.X，授权公告日 2021-06-15。",
-    "一种用于抬升物体的同步多剪叉式升降机装置。实用新型专利，CN213446006U / 202022431602.6，授权公告日 2021-06-15。",
-    "一种家用玩具智能收纳机器人的同步带玩具收集机构。实用新型专利，CN213536204U / 202022431641.6，授权公告日 2021-06-25。",
-    "锌合金扒渣机器人。实用新型专利，CN212763486U / 202021656863.1，授权公告日 2021-03-23。",
-]
+JSON_FILES = {
+    "profile": DATA_DIR / "profile.json",
+    "publications": DATA_DIR / "publications.json",
+    "conferences": DATA_DIR / "conferences.json",
+    "awards": DATA_DIR / "awards.json",
+    "patents": DATA_DIR / "patents.json",
+    "cv": DATA_DIR / "cv.json",
+    "links": DATA_DIR / "links.json",
+    "projects": DATA_DIR / "projects.json",
+}
 
 
-CVS: list[dict[str, Any]] = [
-    {
-        "filename_base": "Longlong_Li_Academic_CV_EN",
-        "language": "en",
-        "name": "Longlong Li",
-        "title": "Academic CV",
-        "position": "PhD Student | BioMEMS / Biosensors / Engineered Cardiac Tissue Monitoring",
-        "affiliation": "Department of Mechanical Engineering, Chonnam National University",
-        "location": "Gwangju, South Korea",
-        "email": "lilonglong2000@jnu.ac.kr",
-        "homepage": "longlongli.com",
-        "header_note": "Comprehensive academic version for research collaboration, postdoctoral applications, and academic review.",
-        "summary": [
-            "PhD student specializing in BioMEMS, multimodal biosensors, engineered cardiac tissue monitoring, and drug cardiotoxicity evaluation.",
-            "Experienced in MEMS device design, microfabrication, cell and tissue culture, sensing system integration, and multimodal biosignal analysis.",
-            "Research focuses on integrating strain sensors, microelectrode arrays, and 3D bioelectronic platforms for synchronized and quantitative assessment of cardiac tissue function.",
-        ],
-        "sections": [
-            {"title": "Education", "items": [
-                "2022-Present | Ph.D. in Mechanical Engineering, Chonnam National University, Gwangju, South Korea",
-                "2018-2022 | B.Eng. in Mechanical Engineering, Wenzhou University, Wenzhou, China",
-            ]},
-            {"title": "Research Experience", "items": [
-                "Designed and developed BioMEMS-based multimodal sensing platforms for engineered cardiac tissues.",
-                "Integrated strain sensors and microelectrode arrays to monitor mechanical contraction and electrical activity in cardiac tissue models.",
-                "Established 3D engineered heart tissue culture and drug stimulation workflows for cardiotoxicity screening and disease modeling.",
-                "Developed MATLAB / Python-based analysis workflows for extracting contraction amplitude, beating frequency, field potential features, and electromechanical coupling parameters.",
-                "Built experimental measurement systems involving low-noise signal acquisition, microscopy, sensor calibration, and hardware integration.",
-            ]},
-            {"title": "Technical Skills", "items": [
-                "Microfabrication: Photolithography, metal deposition, SU-8 / PI processing, MEMS sensor fabrication, device packaging, sensor characterization.",
-                "Biosensing: Strain sensors, microelectrode arrays, electromechanical monitoring, low-noise signal acquisition, sensor calibration.",
-                "Cell & Tissue Engineering: NRVM / hiPSC-CMs culture, engineered heart tissue construction, collagen / dECM bioinks, drug stimulation experiments, immunostaining.",
-                "Data Analysis: MATLAB, Python, cardiac signal processing, feature extraction, visualization, statistical analysis.",
-                "System Integration: DAQ systems, amplifier circuits, microscopy, automated measurement platforms, prototype development.",
-            ]},
-            {"title": "Projects", "items": [
-                "2026.03-Present | Bioinspired Hypoxic Cardiac Model and Electromechanical Evaluation Platform, MNTL.",
-                "2024.03-2026.03 | High-Throughput Drug Toxicity Screening Platform Based on 3D Cardiac Tissues, MNTL.",
-                "2022.09-2024.03 | Graphene-Conductive Microenvironment for Cardiomyocyte Maturation and Electrophysiological Communication, MNTL.",
-                "2022.01-2022.08 | Smart Trash Bin Development, Cixi Zhuoshang Electric Appliance Co., Ltd.",
-                "2021.01-2021.12 | Desktop Customized Food 3D Printer, Wenzhou University.",
-                "2020.01-2020.12 | Toy Storage Robot Based on Visual Recognition and Navigation, Wenzhou University.",
-            ]},
-            {"title": "Publications", "items": FULL_PUBLICATIONS_EN},
-            {"title": "Conferences", "items": FULL_CONFERENCES_EN},
-            {"title": "Patents", "items": FULL_PATENTS_EN},
-            {"title": "Awards", "items": [
-                "2025 | BK21 Fellowship Scholarship",
-                "2025 | RLRC Outstanding Graduate Student",
-                "2021 | China National Scholarship",
-                "2019 | Zhejiang Provincial Government Scholarship",
-            ]},
-        ],
-    },
-    {
-        "filename_base": "Longlong_Li_Academic_CV_ZH",
-        "language": "zh",
-        "name": "李龙龙",
-        "title": "学术简历",
-        "position": "博士研究生 | BioMEMS / 生物传感器 / 工程化心脏组织监测",
-        "affiliation": "全南国立大学机械工程系",
-        "location": "韩国 光州",
-        "email": "lilonglong2000@jnu.ac.kr",
-        "homepage": "longlongli.com",
-        "header_note": "面向学术合作、博士后申请和成果归档的完整版本。",
-        "summary": [
-            "博士研究生，研究方向聚焦于 BioMEMS、多模态生物传感器、工程化心脏组织监测和药物心脏毒性评价。",
-            "具备 MEMS 器件设计、微纳加工、细胞与组织培养、传感系统搭建和多模态生物信号分析经验。",
-            "研究工作围绕应变传感器、微电极阵列和 3D 生物电子平台展开，目标是实现心肌组织机械收缩与电活动的同步、长期和定量检测。",
-        ],
-        "sections": [
-            {"title": "教育经历", "items": [
-                "2022-至今 | 全南国立大学，机械工程博士，韩国 光州",
-                "2018-2022 | 温州大学，机械工程本科，中国 温州",
-            ]},
-            {"title": "科研经历", "items": [
-                "面向工程化心脏组织设计并开发基于 BioMEMS 的多模态传感平台。",
-                "集成应变传感器与微电极阵列，实现心肌组织机械收缩与电活动的同步监测。",
-                "建立 3D 工程化心脏组织培养与药物刺激流程，用于药物心脏毒性筛选和疾病模型研究。",
-                "开发 MATLAB / Python 信号分析流程，用于提取收缩幅值、搏动频率、场电位特征和机电耦合参数。",
-                "搭建包含低噪声信号采集、显微成像、传感器标定和硬件集成在内的实验测量系统。",
-            ]},
-            {"title": "技术技能", "items": [
-                "微纳制造：光刻、金属沉积、SU-8 / PI 工艺、MEMS 传感器制备、器件封装、传感器表征。",
-                "生物传感：应变传感器、微电极阵列、机电同步监测、低噪声信号采集、传感器标定。",
-                "细胞与组织工程：NRVM / hiPSC-CMs 培养、工程化心脏组织构建、胶原 / dECM 生物墨水、药物刺激实验、免疫染色。",
-                "数据分析：MATLAB、Python、心脏信号处理、特征提取、可视化、统计分析。",
-                "系统集成：DAQ 系统、放大电路、显微成像、自动化测量平台、实验原型机开发。",
-            ]},
-            {"title": "项目经历", "items": [
-                "2026.03-至今 | 仿生心脏缺氧模型与机电评估平台，MNTL。",
-                "2024.03-2026.03 | 基于 3D 心脏组织的高通量药物毒理筛选平台，MNTL。",
-                "2022.09-2024.03 | 石墨烯导电微环境对心肌细胞电生理通讯与成熟的调控机制，MNTL。",
-                "2022.01-2022.08 | 智能垃圾桶的开发，慈溪卓尚电器有限公司。",
-                "2021.01-2021.12 | 桌面级定制食品 3D 打印机，温州大学。",
-                "2020.01-2020.12 | 基于视觉识别与导航的玩具收纳机器人，温州大学。",
-            ]},
-            {"title": "论文发表", "items": FULL_PUBLICATIONS_ZH},
-            {"title": "学术会议", "items": FULL_CONFERENCES_ZH},
-            {"title": "专利", "items": FULL_PATENTS_ZH},
-            {"title": "奖励荣誉", "items": [
-                "2025 | BK21 Fellowship Scholarship",
-                "2025 | RLRC Outstanding Graduate Student",
-                "2021 | 中国国家奖学金",
-                "2019 | 浙江省政府奖学金",
-            ]},
-        ],
-    },
-    {
-        "filename_base": "Longlong_Li_Resume_EN",
-        "language": "en",
-        "name": "Longlong Li",
-        "title": "2-page Resume",
-        "position": "PhD Student | BioMEMS / Biosensors / Engineered Cardiac Tissue Monitoring",
-        "affiliation": "Department of Mechanical Engineering, Chonnam National University",
-        "location": "Gwangju, South Korea",
-        "email": "lilonglong2000@jnu.ac.kr",
-        "homepage": "longlongli.com",
-        "header_note": "Condensed version for HR screening, R&D roles, and industry-facing applications.",
-        "summary": [
-            "PhD student specializing in BioMEMS, multimodal biosensors, engineered cardiac tissue monitoring, and drug cardiotoxicity evaluation.",
-            "Experienced in MEMS device design, microfabrication, cell and tissue culture, sensing system integration, and multimodal biosignal analysis.",
-            "Develops strain-sensor / microelectrode-array platforms for synchronized and quantitative assessment of cardiac tissue function.",
-        ],
-        "sections": [
-            {"title": "Education", "items": [
-                "2022-Present | Ph.D. in Mechanical Engineering, Chonnam National University, Gwangju, South Korea",
-                "2018-2022 | B.Eng. in Mechanical Engineering, Wenzhou University, Wenzhou, China",
-            ]},
-            {"title": "Research Experience", "items": [
-                "Designed BioMEMS-based multimodal sensing platforms for engineered cardiac tissues.",
-                "Integrated strain sensors and microelectrode arrays for synchronized monitoring of contraction and electrical activity.",
-                "Built 3D cardiac tissue culture, drug stimulation, and signal-analysis workflows for cardiotoxicity screening and disease modeling.",
-                "Developed low-noise measurement setups involving microscopy, sensor calibration, DAQ, and multimodal data analysis.",
-            ]},
-            {"title": "Technical Skills", "items": [
-                "Microfabrication: Photolithography, metal deposition, SU-8 / PI processing, MEMS sensor fabrication.",
-                "Biosensing: Strain sensors, microelectrode arrays, electromechanical monitoring, sensor calibration.",
-                "Cell & Tissue Engineering: NRVM / hiPSC-CMs culture, engineered heart tissue construction, collagen / dECM bioinks.",
-                "Data Analysis: MATLAB, Python, cardiac signal processing, feature extraction, visualization.",
-                "System Integration: DAQ systems, amplifier circuits, microscopy, automated measurement platforms.",
-            ]},
-            {"title": "Selected Projects", "items": [
-                "Bioinspired Hypoxic Cardiac Model and Electromechanical Evaluation Platform | 2026.03-Present | MNTL | Developed an in vitro cardiac hypoxia model with integrated electromechanical readouts for disease-relevant tissue assessment.",
-                "High-Throughput Drug Toxicity Screening Platform Based on 3D Cardiac Tissues | 2024.03-2026.03 | MNTL | Designed a 3D cardiac tissue-based platform integrating mechanical and electrophysiological sensing for cardiotoxicity evaluation.",
-                "Graphene-Conductive Microenvironment for Cardiomyocyte Maturation and Electrophysiological Communication | 2022.09-2024.03 | MNTL | Developed graphene/SU-8 platforms and contributed to publication and conference outputs.",
-            ]},
-            {"title": "Selected Publications", "items": [
-                "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening. Longlong Li et al. ACS Nano 18(49): 33293-33309, 2024. First author.",
-                "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue. Mst Zobaida Akter et al.; Longlong Li among co-authors. iScience 28(3), 2025.",
-                "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin. Kamrun Nahar Fatema, Longlong Li et al. International Journal of Biological Macromolecules 301: 140449, 2025.",
-                "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors. Jongyun Kim, Longlong Li et al. Journal of Micromechanics and Microengineering 35(4): 045002, 2025.",
-                "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces. Karthikeyan Munirathinam, Longlong Li et al. Nano-Micro Letters 18(1): 251, 2026.",
-            ]},
-            {"title": "Selected Conferences", "items": [
-                "IEEE NANOMED 2024 | Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields.",
-                "IEEE MEMS 2025 | A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and MEA to Monitor Contractility and Field Potential in Cardiomyocytes.",
-                "IEEE SENSORS 2025 | Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues.",
-                "MicroTAS 2025 | Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with Integrated Sensor.",
-                "IEEE MEMS 2026 | Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing.",
-            ]},
-            {"title": "Patent Summary", "items": [
-                "15 patents in total: 4 invention patents, including 3 granted invention patents and 1 published invention patent application.",
-                "11 utility model patents spanning agricultural equipment, smart devices, robotics, and electromechanical systems.",
-                "Representative patents: Vertical-Folding-Based Clothes Folding Machine (CN113186699B), Household Intelligent Toy Storage Robot (CN112407980B), Automatic Potato Harvester (CN216415123U), Intelligent Launch-and-Recovery Management Device for UAV Swarms (CN216269980U).",
-            ]},
-            {"title": "Awards", "items": [
-                "2025 | BK21 Fellowship Scholarship",
-                "2025 | RLRC Outstanding Graduate Student",
-                "2021 | China National Scholarship",
-                "2019 | Zhejiang Provincial Government Scholarship",
-            ]},
-        ],
-    },
-    {
-        "filename_base": "Longlong_Li_Resume_ZH",
-        "language": "zh",
-        "name": "李龙龙",
-        "title": "2 页版求职简历",
-        "position": "博士研究生 | BioMEMS / 生物传感器 / 工程化心脏组织监测",
-        "affiliation": "全南国立大学机械工程系",
-        "location": "韩国 光州",
-        "email": "lilonglong2000@jnu.ac.kr",
-        "homepage": "longlongli.com",
-        "header_note": "面向 HR 初筛、研发岗位和产业合作场景的压缩版本。",
-        "summary": [
-            "博士研究生，研究方向聚焦于 BioMEMS、多模态生物传感器、工程化心脏组织监测和药物心脏毒性评价。",
-            "具备 MEMS 器件设计、微纳加工、细胞与组织培养、传感系统搭建和多模态生物信号分析经验。",
-            "主要开发集成应变传感器和微电极阵列的 3D 生物电子平台，用于心肌组织功能的同步、长期和定量检测。",
-        ],
-        "sections": [
-            {"title": "教育经历", "items": [
-                "2022-至今 | 全南国立大学，机械工程博士，韩国 光州",
-                "2018-2022 | 温州大学，机械工程本科，中国 温州",
-            ]},
-            {"title": "科研经历", "items": [
-                "设计面向工程化心脏组织的 BioMEMS 多模态传感平台。",
-                "集成应变传感器与微电极阵列，实现机械收缩和电活动的同步监测。",
-                "建立 3D 心脏组织培养、药物刺激和信号分析流程，用于药物心脏毒性筛选与疾病模型研究。",
-                "搭建包含显微成像、传感器标定、DAQ 和低噪声采集在内的实验测量系统。",
-            ]},
-            {"title": "技术技能", "items": [
-                "微纳制造：光刻、金属沉积、SU-8 / PI 工艺、MEMS 传感器制备。",
-                "生物传感：应变传感器、微电极阵列、机电同步监测、传感器标定。",
-                "细胞与组织工程：NRVM / hiPSC-CMs 培养、工程化心脏组织构建、胶原 / dECM 生物墨水。",
-                "数据分析：MATLAB、Python、心脏信号处理、特征提取、可视化。",
-                "系统集成：DAQ 系统、放大电路、显微成像、自动化测量平台。",
-            ]},
-            {"title": "代表项目", "items": [
-                "仿生心脏缺氧模型与机电评估平台 | 2026.03-至今 | MNTL | 构建结合多模态机电读出的体外心脏缺氧模型，用于疾病相关组织评估。",
-                "基于 3D 心脏组织的高通量药物毒理筛选平台 | 2024.03-2026.03 | MNTL | 设计集成机械和电生理读出的 3D 心脏组织平台，用于药物心脏毒性评价。",
-                "石墨烯导电微环境对心肌细胞电生理通讯与成熟的调控机制 | 2022.09-2024.03 | MNTL | 开发 graphene / SU-8 平台并支撑论文和国际会议成果输出。",
-            ]},
-            {"title": "代表论文", "items": [
-                "Graphene SU-8 platform for enhanced cardiomyocyte maturation and intercellular communication in cardiac drug screening. Longlong Li et al. ACS Nano 18(49): 33293-33309, 2024。第一作者。",
-                "Harnessing native blueprints for designing bioinks to bioprint functional cardiac tissue. Mst Zobaida Akter et al.; Longlong Li 为共同作者。iScience 28(3), 2025。",
-                "Development of multifunctional PAA-alginate-carboxymethyl cellulose hydrogel-loaded fiber-reinforced biomimetic scaffolds for controlled release of curcumin. Kamrun Nahar Fatema, Longlong Li et al. International Journal of Biological Macromolecules 301: 140449, 2025。",
-                "Enhancing cardiomyocyte maturation through PEDOT:PSS-coated surfaces and mechanical stimulation with strain sensors. Jongyun Kim, Longlong Li et al. Journal of Micromechanics and Microengineering 35(4): 045002, 2025。",
-                "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces. Karthikeyan Munirathinam, Longlong Li et al. Nano-Micro Letters 18(1): 251, 2026。",
-            ]},
-            {"title": "代表会议", "items": [
-                "IEEE NANOMED 2024 | Enhancing Cardiomyocyte Maturation via Mechanical Stimulation of 3D Printed Cardiac Tissue Using a Origami-based 3D Sensor and Magnetic Fields。",
-                "IEEE MEMS 2025 | A Dual-Detection Approach for Cardiotoxicity Screening: Utilizing Nano Silicon Strain Sensor and MEA to Monitor Contractility and Field Potential in Cardiomyocytes。",
-                "IEEE SENSORS 2025 | Origami-Inspired 3D Sensor Platform for Real-Time Electromechanical Coupling Analysis in Engineered Heart Tissues。",
-                "MicroTAS 2025 | Development of a Multi-Channel Wireless Monitoring Platform for Long-Term Cardiomyocyte Contraction Assessment Using a Polymer Cantilever with Integrated Sensor。",
-                "IEEE MEMS 2026 | Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing。",
-            ]},
-            {"title": "专利概览", "items": [
-                "共 15 项专利：4 项发明专利，其中 3 项为授权发明专利，1 项为公开发明专利申请。",
-                "另有 11 项实用新型专利，覆盖农业装备、智能装置、机器人和机电系统。",
-                "代表专利：一种基于纵向折叠的叠衣机（CN113186699B）、一种家用玩具智能收纳机器人（CN112407980B）、一种自动马铃薯收获机（CN216415123U）、一种无人机集群的智能收发管理装置（CN216269980U）。",
-            ]},
-            {"title": "奖励荣誉", "items": [
-                "2025 | BK21 Fellowship Scholarship",
-                "2025 | RLRC Outstanding Graduate Student",
-                "2021 | 中国国家奖学金",
-                "2019 | 浙江省政府奖学金",
-            ]},
-        ],
-    },
-]
+def load_json(path: Path) -> Any:
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Missing {path.relative_to(ROOT)}. Run 'python tools\\generate_site_data.py' first."
+        )
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_site_data() -> dict[str, Any]:
+    return {name: load_json(path) for name, path in JSON_FILES.items()}
+
+
+def localized(value: Any, lang: str, fallback: str = "") -> str:
+    if value is None:
+        return fallback
+    if isinstance(value, dict):
+        return str(value.get(lang) or value.get("en") or value.get("zh") or fallback)
+    return str(value)
+
+
+def field(item: dict[str, Any], base: str, lang: str, fallback: str = "") -> str:
+    return str(item.get(f"{base}_{lang}") or item.get(f"{base}_en") or item.get(base) or fallback or "")
+
+
+def clean_text(text: Any) -> str:
+    if text is None:
+        return ""
+    return re.sub(r"\s+", " ", str(text).replace("H. Sun", "Haolan Sun")).strip()
+
+
+def sort_by_year(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    def key(item: dict[str, Any]) -> tuple[int, str]:
+        raw = item.get("year") or item.get("year_or_period") or item.get("date") or ""
+        match = re.search(r"\d{4}", str(raw))
+        year = int(match.group(0)) if match else -1
+        return (-year, str(item.get("id") or item.get("item_id") or item.get("title_en") or ""))
+
+    return sorted(items, key=key)
+
+
+def publication_info(pub: dict[str, Any]) -> str:
+    parts: list[str] = []
+    journal = clean_text(pub.get("journal"))
+    if journal:
+        parts.append(journal)
+    volume = clean_text(pub.get("volume"))
+    issue = clean_text(pub.get("issue"))
+    pages = clean_text(pub.get("pages"))
+    year = clean_text(pub.get("year"))
+    if volume and issue:
+        parts.append(f"{volume}({issue})")
+    elif volume:
+        parts.append(volume)
+    if pages:
+        parts.append(pages)
+    if year:
+        parts.append(year)
+    return ", ".join(parts)
+
+
+def format_publication(pub: dict[str, Any], lang: str) -> str:
+    title = clean_text(field(pub, "title", lang))
+    authors = clean_text(pub.get("authors"))
+    info = publication_info(pub)
+    link = clean_text(pub.get("doi") or pub.get("link"))
+    parts = [part for part in [title, authors, info, f"Link: {link}" if link else ""] if part]
+    return ". ".join(parts)
+
+
+def format_conference(conf: dict[str, Any], lang: str) -> str:
+    title = clean_text(field(conf, "title", lang))
+    authors = clean_text(conf.get("authors"))
+    conference = clean_text(conf.get("conference"))
+    location = clean_text(conf.get("location"))
+    year = clean_text(conf.get("year"))
+    venue = ", ".join(part for part in [conference, location, year] if part)
+    link = clean_text(conf.get("link"))
+    parts = [part for part in [title, authors, venue, f"Link: {link}" if link else ""] if part]
+    return ". ".join(parts)
+
+
+def format_award(award: dict[str, Any], lang: str) -> str:
+    year = clean_text(award.get("year"))
+    name = clean_text(field(award, "name", lang))
+    level = clean_text(award.get("level"))
+    org = clean_text(award.get("organization"))
+    desc = clean_text(field(award, "description", lang))
+    meta = " | ".join(part for part in [level, org, desc] if part)
+    return " | ".join(part for part in [year, name, meta] if part)
+
+
+def patent_status_label(patent: dict[str, Any], lang: str) -> str:
+    status = clean_text(patent.get("status"))
+    if lang == "zh":
+        mapping = {
+            "Granted invention patent": "授权发明专利",
+            "Published invention patent application": "发明专利申请",
+            "Utility model patent": "实用新型专利",
+        }
+        return mapping.get(status, status)
+    return status
+
+
+def format_patent(patent: dict[str, Any], lang: str) -> str:
+    title = clean_text(field(patent, "title", lang))
+    inventors = clean_text(patent.get("inventors"))
+    applicant = clean_text(patent.get("applicant"))
+    patent_no = clean_text(patent.get("patent_number"))
+    app_no = clean_text(patent.get("application_number"))
+    status = patent_status_label(patent, lang)
+    app_date = clean_text(patent.get("application_date_display") or patent.get("application_date"))
+    grant_date = clean_text(
+        patent.get("grant_or_publication_date_display") or patent.get("grant_or_publication_date")
+    )
+    number = " / ".join(part for part in [patent_no, app_no] if part)
+    if lang == "zh":
+        pieces = [
+            title,
+            f"发明人: {inventors}" if inventors else "",
+            f"申请人/专利权人: {applicant}" if applicant else "",
+            f"专利/申请号: {number}" if number else "",
+            f"状态: {status}" if status else "",
+            f"申请日: {app_date}" if app_date else "",
+            f"授权/公布日: {grant_date}" if grant_date else "",
+        ]
+    else:
+        pieces = [
+            title,
+            f"Inventors: {inventors}" if inventors else "",
+            f"Patentee / Applicant: {applicant}" if applicant else "",
+            f"Patent No. / Application No.: {number}" if number else "",
+            f"Status: {status}" if status else "",
+            f"Application date: {app_date}" if app_date else "",
+            f"Grant / publication date: {grant_date}" if grant_date else "",
+        ]
+    return ". ".join(part for part in pieces if part)
+
+
+def patent_summary(patents: list[dict[str, Any]], lang: str) -> str:
+    total = len(patents)
+    invention = sum(1 for p in patents if p.get("patent_type") in {"granted_invention", "application_invention"})
+    granted = sum(1 for p in patents if p.get("patent_type") == "granted_invention")
+    utility = sum(1 for p in patents if p.get("patent_type") == "utility_model")
+    if lang == "zh":
+        return f"{total} 项专利 | {invention} 项发明专利 | {granted} 项授权发明 | {utility} 项实用新型"
+    return f"{total} total patents | {invention} invention patents | {granted} granted inventions | {utility} utility model patents"
+
+
+def format_cv_item(item: dict[str, Any], lang: str) -> str:
+    period = clean_text(item.get("year_or_period"))
+    title = clean_text(field(item, "title", lang))
+    org = clean_text(item.get("organization"))
+    desc = clean_text(field(item, "description", lang))
+    return " | ".join(part for part in [period, title, org, desc] if part)
+
+
+def cv_items(cv_data: dict[str, Any], section: str, lang: str, limit: int | None = None) -> list[str]:
+    items = sorted(cv_data.get(section, []), key=lambda x: x.get("order") or 999)
+    out = [format_cv_item(item, lang) for item in items]
+    out = [item for item in out if item]
+    return out[:limit] if limit else out
+
+
+def build_sections(data: dict[str, Any], lang: str, academic: bool) -> list[dict[str, list[str] | str]]:
+    cv_data = data["cv"]
+    publications = sort_by_year(data["publications"])
+    conferences = sort_by_year(data["conferences"])
+    awards = sort_by_year(data["awards"])
+    patents = sort_by_year(data["patents"])
+
+    labels = {
+        "en": {
+            "education": "Education",
+            "research": "Research Experience",
+            "skills": "Technical Skills",
+            "projects": "Projects" if academic else "Selected Projects",
+            "publications": "Publications" if academic else "Selected Publications",
+            "oral": "Conferences - Oral Presentations",
+            "poster": "Conferences - Poster Presentations",
+            "conferences": "Representative Conferences",
+            "patents": "Patents",
+            "awards": "Awards",
+        },
+        "zh": {
+            "education": "教育经历",
+            "research": "科研经历",
+            "skills": "技术技能",
+            "projects": "项目经历" if academic else "精选项目",
+            "publications": "论文发表" if academic else "代表论文",
+            "oral": "学术会议 - 口头报告",
+            "poster": "学术会议 - 海报展示",
+            "conferences": "代表会议",
+            "patents": "专利",
+            "awards": "奖励荣誉",
+        },
+    }[lang]
+
+    sections: list[dict[str, list[str] | str]] = [
+        {"title": labels["education"], "items": cv_items(cv_data, "education", lang)},
+        {"title": labels["research"], "items": cv_items(cv_data, "research_experience", lang)},
+        {"title": labels["skills"], "items": cv_items(cv_data, "technical_skills", lang)},
+        {"title": labels["projects"], "items": cv_items(cv_data, "selected_projects", lang, None if academic else 3)},
+    ]
+
+    if academic:
+        sections.append({"title": labels["publications"], "items": [format_publication(pub, lang) for pub in publications]})
+        oral = [conf for conf in conferences if clean_text(conf.get("presentation_type")).lower() == "oral"]
+        poster = [conf for conf in conferences if clean_text(conf.get("presentation_type")).lower() != "oral"]
+        sections.append({"title": labels["oral"], "items": [format_conference(conf, lang) for conf in oral]})
+        sections.append({"title": labels["poster"], "items": [format_conference(conf, lang) for conf in poster]})
+        sections.append(
+            {
+                "title": labels["patents"],
+                "items": [patent_summary(patents, lang)] + [format_patent(patent, lang) for patent in patents],
+            }
+        )
+        sections.append({"title": labels["awards"], "items": [format_award(award, lang) for award in awards]})
+    else:
+        selected_pubs = [pub for pub in publications if pub.get("selected")]
+        if not selected_pubs:
+            selected_pubs = publications[:5]
+        sections.append(
+            {"title": labels["publications"], "items": [format_publication(pub, lang) for pub in selected_pubs[:5]]}
+        )
+        selected_confs = cv_items(cv_data, "selected_conferences", lang, 5)
+        sections.append({"title": labels["conferences"], "items": selected_confs})
+        representative_patents = cv_items(cv_data, "patent_overview", lang, 5)
+        sections.append({"title": labels["patents"], "items": representative_patents})
+        sections.append({"title": labels["awards"], "items": cv_items(cv_data, "awards", lang)})
+
+    return sections
+
+
+def build_cv_payloads(site_data: dict[str, Any]) -> list[dict[str, Any]]:
+    profile = site_data["profile"]
+    cv_data = site_data["cv"]
+    profile_entry = cv_data.get("profile", [{}])[0]
+    name_en = localized(profile.get("name"), "en", "Longlong Li")
+    name_zh = localized(profile.get("name"), "zh", "李龙龙")
+    position_en = localized(profile.get("position"), "en", "PhD Student")
+    position_zh = localized(profile.get("position"), "zh", "博士研究生")
+    affiliation_en = localized(profile.get("affiliation"), "en")
+    affiliation_zh = localized(profile.get("affiliation"), "zh")
+    location_en = localized(profile.get("location"), "en")
+    location_zh = localized(profile.get("location"), "zh")
+    email = localized(profile.get("email"), "en", "lilonglong2000@jnu.ac.kr")
+    homepage = localized(profile.get("homepage"), "en", "longlongli.com")
+
+    common = {
+        "email": email,
+        "homepage": homepage,
+    }
+
+    definitions = [
+        {
+            "filename_base": "Longlong_Li_Academic_CV_EN",
+            "language": "en",
+            "academic": True,
+            "name": name_en,
+            "title": "Academic CV",
+            "position": f"{position_en} | BioMEMS / Biosensors / Engineered Cardiac Tissue Monitoring",
+            "affiliation": affiliation_en,
+            "location": location_en,
+            "header_note": "Comprehensive academic version for research collaboration, postdoctoral applications, and academic review.",
+            "summary": [clean_text(field(profile_entry, "description", "en"))],
+        },
+        {
+            "filename_base": "Longlong_Li_Academic_CV_ZH",
+            "language": "zh",
+            "academic": True,
+            "name": name_zh,
+            "title": "学术简历",
+            "position": f"{position_zh} | BioMEMS / 生物传感器 / 工程化心脏组织监测",
+            "affiliation": affiliation_zh,
+            "location": location_zh,
+            "header_note": "面向学术合作、博士后申请和成果归档的完整版本。",
+            "summary": [clean_text(field(profile_entry, "description", "zh"))],
+        },
+        {
+            "filename_base": "Longlong_Li_Resume_EN",
+            "language": "en",
+            "academic": False,
+            "name": name_en,
+            "title": "2-page Resume",
+            "position": f"{position_en} | BioMEMS / Biosensors / Engineered Cardiac Tissue Monitoring",
+            "affiliation": affiliation_en,
+            "location": location_en,
+            "header_note": "Condensed version for HR screening, R&D roles, and industry-facing applications.",
+            "summary": [clean_text(field(profile_entry, "description", "en"))],
+        },
+        {
+            "filename_base": "Longlong_Li_Resume_ZH",
+            "language": "zh",
+            "academic": False,
+            "name": name_zh,
+            "title": "2 页版求职简历",
+            "position": f"{position_zh} | BioMEMS / 生物传感器 / 工程化心脏组织监测",
+            "affiliation": affiliation_zh,
+            "location": location_zh,
+            "header_note": "面向 HR 初筛、研发岗位和产业应用场景的精简版本。",
+            "summary": [clean_text(field(profile_entry, "description", "zh"))],
+        },
+    ]
+
+    payloads: list[dict[str, Any]] = []
+    for item in definitions:
+        payload = {**common, **item}
+        payload["sections"] = build_sections(site_data, payload["language"], payload["academic"])
+        payloads.append(payload)
+    return payloads
 
 
 def set_page(doc: Document) -> None:
     section = doc.sections[0]
-    section.page_width = Inches(8.5)
-    section.page_height = Inches(11)
-    section.top_margin = Inches(0.78)
-    section.bottom_margin = Inches(0.7)
-    section.left_margin = Inches(0.75)
-    section.right_margin = Inches(0.75)
-    section.header_distance = Inches(0.35)
-    section.footer_distance = Inches(0.35)
+    section.top_margin = Inches(0.55)
+    section.bottom_margin = Inches(0.55)
+    section.left_margin = Inches(0.7)
+    section.right_margin = Inches(0.7)
 
 
 def add_bottom_rule(paragraph) -> None:
-    p_pr = paragraph._p.get_or_add_pPr()
-    p_bdr = p_pr.find(qn("w:pBdr"))
-    if p_bdr is None:
-        p_bdr = OxmlElement("w:pBdr")
-        p_pr.append(p_bdr)
+    p = paragraph._p
+    p_pr = p.get_or_add_pPr()
+    p_bdr = OxmlElement("w:pBdr")
     bottom = OxmlElement("w:bottom")
     bottom.set(qn("w:val"), "single")
     bottom.set(qn("w:sz"), "4")
-    bottom.set(qn("w:space"), "2")
+    bottom.set(qn("w:space"), "5")
     bottom.set(qn("w:color"), "B6C4D5")
     p_bdr.append(bottom)
+    p_pr.append(p_bdr)
 
 
 def style_document(doc: Document, east_asia_font: str, compact: bool) -> None:
@@ -450,6 +441,8 @@ def add_header(doc: Document, data: dict[str, Any], east_asia_font: str, compact
 
 
 def add_bullet_group(doc: Document, title: str, items: list[str], east_asia_font: str, compact: bool) -> None:
+    if not items:
+        return
     h = doc.add_paragraph(style="Heading 1")
     r = h.add_run(title)
     r.font.name = "Arial"
@@ -479,7 +472,7 @@ def add_footer(doc: Document, label: str) -> None:
 
 def build_docx(data: dict[str, Any]) -> Path:
     east_asia_font = "SimSun" if data["language"] == "zh" else "Arial"
-    compact = "Resume" in data["filename_base"] or "求职简历" in data["title"]
+    compact = not data["academic"]
     doc = Document()
     set_page(doc)
     style_document(doc, east_asia_font, compact)
@@ -487,16 +480,20 @@ def build_docx(data: dict[str, Any]) -> Path:
     profile_title = "Profile" if data["language"] == "en" else "个人简介"
     add_bullet_group(doc, profile_title, data["summary"], east_asia_font, compact)
     for section in data["sections"]:
-        add_bullet_group(doc, section["title"], section["items"], east_asia_font, compact)
+        add_bullet_group(doc, str(section["title"]), list(section["items"]), east_asia_font, compact)
     add_footer(doc, data["filename_base"])
     path = CV_ASSETS / f"{data['filename_base']}.docx"
     doc.save(path)
     return path
 
 
+def pdf_paragraph(text: str, style: ParagraphStyle) -> Paragraph:
+    return Paragraph(escape(text), style)
+
+
 def build_pdf(data: dict[str, Any]) -> Path:
     out = CV_ASSETS / f"{data['filename_base']}.pdf"
-    compact = "Resume" in data["filename_base"] or "求职简历" in data["title"]
+    compact = not data["academic"]
     font_name = "STSong-Light" if data["language"] == "zh" else "Helvetica"
     title_font = "STSong-Light" if data["language"] == "zh" else "Helvetica-Bold"
 
@@ -566,36 +563,52 @@ def build_pdf(data: dict[str, Any]) -> Path:
     )
 
     story = [
-        Paragraph(data["name"], title_style),
-        Paragraph(data["position"], meta_style),
-        Paragraph(data["affiliation"], meta_style),
-        Paragraph(f"{data['location']} | {data['email']} | Homepage: {data['homepage']}", meta_style),
+        pdf_paragraph(data["name"], title_style),
+        pdf_paragraph(data["position"], meta_style),
+        pdf_paragraph(data["affiliation"], meta_style),
+        pdf_paragraph(f"{data['location']} | {data['email']} | Homepage: {data['homepage']}", meta_style),
         Spacer(1, 2),
-        Paragraph(data["header_note"], note_style),
+        pdf_paragraph(data["header_note"], note_style),
     ]
 
     profile_title = "Profile" if data["language"] == "en" else "个人简介"
-    story.append(Paragraph(profile_title, heading_style))
+    story.append(pdf_paragraph(profile_title, heading_style))
     for item in data["summary"]:
-        safe = item.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        story.append(Paragraph(f"- {safe}", bullet_style))
+        story.append(pdf_paragraph(f"- {item}", bullet_style))
 
     for section in data["sections"]:
-        story.append(Paragraph(section["title"], heading_style))
+        story.append(pdf_paragraph(str(section["title"]), heading_style))
         for item in section["items"]:
-            safe = item.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            story.append(Paragraph(f"- {safe}", bullet_style))
+            story.append(pdf_paragraph(f"- {item}", bullet_style))
 
     doc.build(story)
     return out
 
 
+def print_counts(site_data: dict[str, Any]) -> None:
+    conferences = site_data["conferences"]
+    oral = sum(1 for item in conferences if clean_text(item.get("presentation_type")).lower() == "oral")
+    poster = len(conferences) - oral
+    patents = site_data["patents"]
+    print("Loaded website JSON data:")
+    print(f"- publications: {len(site_data['publications'])}")
+    print(f"- conferences: {len(conferences)} ({oral} oral, {poster} poster)")
+    print(f"- awards: {len(site_data['awards'])}")
+    print(f"- patents: {len(patents)}")
+
+
 def main() -> None:
     CV_ASSETS.mkdir(parents=True, exist_ok=True)
     pdfmetrics.registerFont(UnicodeCIDFont("STSong-Light"))
-    for data in CVS:
-        build_docx(data)
-        build_pdf(data)
+    site_data = load_site_data()
+    print_counts(site_data)
+    payloads = build_cv_payloads(site_data)
+    print("Generated CV documents:")
+    for data in payloads:
+        docx_path = build_docx(data)
+        pdf_path = build_pdf(data)
+        print(f"- {docx_path.relative_to(ROOT)}")
+        print(f"- {pdf_path.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

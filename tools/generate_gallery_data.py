@@ -8,8 +8,11 @@ from pathlib import Path
 from urllib.parse import quote
 
 
+# Legacy utility: the website now uses assets/data/gallery.json generated from
+# data/website_content.xlsx. Keep this script only for historical recovery.
 ROOT = Path(__file__).resolve().parents[1]
 ALBUMS_DIR = ROOT / "assets" / "albums"
+ALBUMS_OPTIMIZED_DIR = ROOT / "assets" / "albums-optimized"
 OUTPUT_PATH = ROOT / "assets" / "gallery-data.json"
 SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 DATE_PATTERN = re.compile(r"^(?P<date>\d{8}|\d{4}-\d{2}-\d{2})[_-](?P<title>.+)$")
@@ -49,11 +52,14 @@ def parse_item(path: Path) -> GalleryItem:
     else:
       title_token = stem
 
-    encoded_name = quote(path.name)
+    optimized_name = f"{path.stem}.webp"
+    output_name = optimized_name if (ALBUMS_OPTIMIZED_DIR / optimized_name).exists() else path.name
+    output_folder = "albums-optimized" if output_name == optimized_name else "albums"
+    encoded_name = quote(output_name)
     return GalleryItem(
         filename=path.name,
         title=normalize_title(title_token),
-        src=f"assets/albums/{encoded_name}",
+        src=f"assets/{output_folder}/{encoded_name}",
         date=display_date,
         sort_date=sort_date,
     )
