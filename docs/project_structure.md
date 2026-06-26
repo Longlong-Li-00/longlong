@@ -44,6 +44,8 @@ These files or folders are expected to be edited manually:
 - `README.md`
 - files under `docs/`
 
+The downloadable CV files are not edited manually in normal maintenance. They are generated into `assets/CV/` by `tools/generate_cv_docs.py` after `assets/data/*.json` has been refreshed.
+
 ## Automatically generated files
 
 These files are generated outputs and should usually not be edited manually:
@@ -72,6 +74,8 @@ python tools\generate_site_data.py
   Reverse extraction helper for rebuilding or auditing the Excel workbook from an existing website snapshot.
 - `tools/check_content_update.py`
   Search helper for checking whether a keyword exists in the Excel source and generated JSON files.
+- `tools/generate_cv_docs.py`
+  Generates the active Academic CV and 2-page Resume DOCX/PDF files from `assets/data/*.json`. Run this after `tools/generate_site_data.py` when Excel changes should be reflected in downloadable CV files.
 - `scripts/data-renderer.js`
   Frontend content renderer that reads `assets/data/*.json` and injects structured content into HTML pages.
 - `scripts.js`

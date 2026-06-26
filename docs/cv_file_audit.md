@@ -1,25 +1,25 @@
 # CV File Audit
 
-Audit date: 2026-06-25
+Audit date: 2026-06-25; updated 2026-06-26
 
-Scope: initial inspection of `assets/CV/`, followed by the approved archival of four unreferenced legacy files. No CV content, download link, Excel workbook, JSON file, page, or script was modified.
+Scope: initial inspection of `assets/CV/`, followed by the approved archival of four unreferenced legacy files and the later synchronization of active Academic CV / Resume outputs with Excel-driven JSON data. No CV download link, Excel workbook, page, or unrelated asset was modified.
 
 ## Current CV files
 
 | Path | Type | Size | Modified time | Referenced by | Initial judgment |
 |---|---|---:|---|---|---|
-| `assets/CV/Longlong_Li_Academic_CV_EN.docx` | DOCX | 41,233 B | 2026-05-29 21:45:47 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active English Academic CV |
-| `assets/CV/Longlong_Li_Academic_CV_EN.pdf` | PDF, 3 pages | 8,337 B | 2026-05-29 21:45:47 | `cv.html`, Excel `links!D9`, `assets/data/links.json`, renderer download selection | Keep: active English Academic CV download |
-| `assets/CV/Longlong_Li_Academic_CV_ZH.docx` | DOCX | 41,625 B | 2026-05-29 21:45:47 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active Chinese Academic CV |
-| `assets/CV/Longlong_Li_Academic_CV_ZH.pdf` | PDF, 3 pages | 10,781 B | 2026-05-29 21:45:47 | `zh/cv.html`, Excel `links!D11`, `assets/data/links.json`, renderer download selection | Keep: active Chinese Academic CV download |
+| `assets/CV/Longlong_Li_Academic_CV_EN.docx` | DOCX | 43,246 B | 2026-06-26 09:48:00 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active English Academic CV |
+| `assets/CV/Longlong_Li_Academic_CV_EN.pdf` | PDF, 4 pages | 12,376 B | 2026-06-26 09:48:00 | `cv.html`, Excel `links!D9`, `assets/data/links.json`, renderer download selection | Keep: active English Academic CV download |
+| `assets/CV/Longlong_Li_Academic_CV_ZH.docx` | DOCX | 43,740 B | 2026-06-26 09:48:00 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active Chinese Academic CV |
+| `assets/CV/Longlong_Li_Academic_CV_ZH.pdf` | PDF, 4 pages | 15,562 B | 2026-06-26 09:48:00 | `zh/cv.html`, Excel `links!D11`, `assets/data/links.json`, renderer download selection | Keep: active Chinese Academic CV download |
 | `archive/CV/legacy/Longlong_Li_CV_EN.docx` | DOCX | 40,702 B | 2026-05-25 15:53:30 | No active reference found | Archived: older general English CV source |
 | `archive/CV/legacy/Longlong_Li_CV_EN.pdf` | PDF, 3 pages | 7,507 B | 2026-05-25 15:53:30 | No active reference found | Archived: older general English CV export |
 | `archive/CV/legacy/Longlong_Li_CV_ZH.docx` | DOCX | 41,081 B | 2026-05-25 15:53:30 | No active reference found | Archived: older general Chinese CV source |
 | `archive/CV/legacy/Longlong_Li_CV_ZH.pdf` | PDF, 3 pages | 9,842 B | 2026-05-25 15:53:30 | No active reference found | Archived: older general Chinese CV export |
-| `assets/CV/Longlong_Li_Resume_EN.docx` | DOCX | 40,056 B | 2026-05-29 21:45:47 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active English two-page Resume |
-| `assets/CV/Longlong_Li_Resume_EN.pdf` | PDF, 2 pages | 5,988 B | 2026-05-29 21:45:47 | `cv.html`, Excel `links!D10`, `assets/data/links.json`, renderer download selection | Keep: active English Resume download |
-| `assets/CV/Longlong_Li_Resume_ZH.docx` | DOCX | 40,403 B | 2026-05-29 21:45:47 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active Chinese two-page Resume |
-| `assets/CV/Longlong_Li_Resume_ZH.pdf` | PDF, 2 pages | 8,024 B | 2026-05-29 21:45:47 | `zh/cv.html`, Excel `links!D12`, `assets/data/links.json`, renderer download selection | Keep: active Chinese Resume download |
+| `assets/CV/Longlong_Li_Resume_EN.docx` | DOCX | 40,905 B | 2026-06-26 09:48:00 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active English two-page Resume |
+| `assets/CV/Longlong_Li_Resume_EN.pdf` | PDF, 2 pages | 7,280 B | 2026-06-26 09:48:00 | `cv.html`, Excel `links!D10`, `assets/data/links.json`, renderer download selection | Keep: active English Resume download |
+| `assets/CV/Longlong_Li_Resume_ZH.docx` | DOCX | 41,237 B | 2026-06-26 09:48:00 | `tools/generate_cv_docs.py` output target | Keep: editable source/output for the active Chinese two-page Resume |
+| `assets/CV/Longlong_Li_Resume_ZH.pdf` | PDF, 2 pages | 9,558 B | 2026-06-26 09:48:00 | `zh/cv.html`, Excel `links!D12`, `assets/data/links.json`, renderer download selection | Keep: active Chinese Resume download |
 
 All 12 files have distinct binary SHA-256 hashes. No byte-for-byte duplicate file was found.
 
@@ -83,44 +83,43 @@ The older general CV overlaps substantially with the later Academic CV but is no
 
 The Academic CV is the more complete successor for the current website. The general CV still contains a readable alternate presentation, so archive is safer than immediate deletion.
 
-## Content freshness and download-link risk
+## CV data synchronization status
 
 No broken download path or placeholder PDF was found. All four active PDF files exist and can be parsed.
 
-However, there is a content freshness risk:
+The active CV generator now reads the Excel-driven website JSON files:
+
+- `assets/data/profile.json`
+- `assets/data/publications.json`
+- `assets/data/conferences.json`
+- `assets/data/awards.json`
+- `assets/data/patents.json`
+- `assets/data/cv.json`
+- `assets/data/links.json`
+
+The previous content freshness risk has been resolved for the full Academic CV outputs:
 
 | Data area | Current website JSON | Full Academic CV |
 |---|---:|---:|
 | Publications | 9 | 9 |
-| Conferences | 12 | 10 |
+| Conferences | 12 | 12 |
 | Patents | 15 | 15 |
-| Awards | 12 | 4 |
+| Awards | 12 | 12 |
 
-The active full Academic CV PDFs do not include the two newer conference records:
+Text verification confirmed that both English and Chinese Academic CV DOCX/PDF files include all current publication, conference, award, and patent records from the generated JSON data. `KMEMS` appears in the regenerated CV files, and `H. Sun` does not appear.
 
-- `Real-Time Electromechanical Monitoring of Engineered Heart Tissue Responses to Cardiac Drugs`
-- `3D Cardiac Tissue Platform for Monitoring Contractility and Assessing Cardiotoxicity`
+The two-page Resume intentionally contains selected records, so a lower item count remains expected.
 
-They also omit eight awards currently present in `assets/data/awards.json`, including:
-
-- `Best Poster Presentation Award, KSS 2025`
-- `Outstanding Paper Award, KMEMS 2025`
-- six competition or sports awards from 2019-2021
-
-The two-page Resume intentionally contains selected records, so a lower item count is expected. The full Academic CV is described as comprehensive, so its missing conference and award records should be treated as stale content rather than intentional compression.
-
-`tools/generate_cv_docs.py` currently contains its own static CV content definitions. It does not read `data/website_content.xlsx` or `assets/data/*.json`. Running `tools/generate_site_data.py` therefore does not refresh the downloadable CV/Resume files.
-
-This is a content synchronization risk, not a broken-link risk.
+One data classification note remains: `assets/data/conferences.json` currently marks six records as `oral`, while the approved CV classification uses four oral presentations and treats all other conference records as poster presentations. This is handled inside `tools/generate_cv_docs.py` without modifying Excel or generated JSON.
 
 ## Recommended actions
 
 | Path | Recommendation | Reason | Risk |
 |---|---|---|---|
-| `assets/CV/Longlong_Li_Academic_CV_EN.docx` | Keep and update in a later CV synchronization phase | Current editable Academic CV counterpart | High if removed |
-| `assets/CV/Longlong_Li_Academic_CV_EN.pdf` | Keep; regenerate after content synchronization | Active website download | High if moved or removed |
-| `assets/CV/Longlong_Li_Academic_CV_ZH.docx` | Keep and update in a later CV synchronization phase | Current editable Academic CV counterpart | High if removed |
-| `assets/CV/Longlong_Li_Academic_CV_ZH.pdf` | Keep; regenerate after content synchronization | Active website download | High if moved or removed |
+| `assets/CV/Longlong_Li_Academic_CV_EN.docx` | Keep and regenerate through `tools/generate_cv_docs.py` | Current editable Academic CV counterpart | High if removed |
+| `assets/CV/Longlong_Li_Academic_CV_EN.pdf` | Keep and regenerate through `tools/generate_cv_docs.py` | Active website download | High if moved or removed |
+| `assets/CV/Longlong_Li_Academic_CV_ZH.docx` | Keep and regenerate through `tools/generate_cv_docs.py` | Current editable Academic CV counterpart | High if removed |
+| `assets/CV/Longlong_Li_Academic_CV_ZH.pdf` | Keep and regenerate through `tools/generate_cv_docs.py` | Active website download | High if moved or removed |
 | `assets/CV/Longlong_Li_Resume_EN.docx` | Keep | Current editable two-page Resume counterpart | Medium |
 | `assets/CV/Longlong_Li_Resume_EN.pdf` | Keep | Active website download | High if moved or removed |
 | `assets/CV/Longlong_Li_Resume_ZH.docx` | Keep | Current editable two-page Resume counterpart | Medium |
@@ -135,8 +134,8 @@ Recommended sequence:
 1. Keep all current download files in `assets/CV/`.
 2. Keep the four older files together in `archive/CV/legacy/`, preserving English/Chinese and DOCX/PDF pairs.
 3. Do not link website pages to archived files.
-4. In a separate phase, make the CV document generator consume the Excel-generated data or another single structured source.
-5. Regenerate and verify the Academic CV and Resume after synchronization.
+4. After Excel changes that affect CV downloads, run `python tools\generate_site_data.py` followed by `python tools\generate_cv_docs.py`.
+5. Verify the regenerated DOCX/PDF text and active download paths before committing.
 
 ## Do not delete now
 
@@ -147,11 +146,11 @@ In particular, retain:
 - all DOCX files, because they may be editable source files;
 - all four PDFs used by current download buttons;
 - the four archived `Longlong_Li_CV_*` files until a later manual review confirms that the older layout contains no presentation or wording worth preserving;
-- all current CV files until the stale Academic CV content is regenerated and visually verified.
+- all current CV files because they are the active download/source set for the website.
 
 ## Verification limitations
 
 - PDF and DOCX text extraction, page count, timestamps, hashes, references, and content similarity were checked successfully.
-- The six DOCX files could not be rendered through the standard document QA tool because LibreOffice/`soffice` is not installed in the current environment.
+- The active DOCX files could not be rendered through the standard document QA tool because LibreOffice/`soffice` is not installed in the current environment.
 - Poppler/`pdftoppm` is also unavailable, so PDF pages could not be rasterized for visual inspection.
 - This audit therefore makes content and reference judgments only; it does not certify visual layout quality.
