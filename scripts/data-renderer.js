@@ -109,6 +109,29 @@
     return li;
   }
 
+  function applyPublicationFilter(container, selectedYear, lang) {
+    const value = String(selectedYear || "all");
+    const cards = [...container.querySelectorAll(".pub-item")];
+    container.querySelectorAll(".pub-empty-message").forEach((node) => node.remove());
+
+    cards.forEach((item) => {
+      const itemYear = String(item.dataset.year || "");
+      item.hidden = value !== "all" && itemYear !== value;
+    });
+
+    updatePublicationYearHeadings(container);
+
+    const visibleCards = cards.filter((item) => !item.hidden);
+    if (!visibleCards.length) {
+      const message = el(
+        "li",
+        "pub-empty-message",
+        lang === "zh" ? "该年份暂无论文。" : "No publications found for this year."
+      );
+      container.append(message);
+    }
+  }
+
   function buildPublicationControls(container, items, lang) {
     const years = [...new Set(items.map((item) => String(item.year)).filter(Boolean))].sort((a, b) => b.localeCompare(a));
     const controls = el("div", "publication-controls");
@@ -126,10 +149,7 @@
       if (!button) return;
       const value = button.dataset.filterValue || "all";
       controls.querySelectorAll("button").forEach((node) => node.classList.toggle("is-active", node === button));
-      container.querySelectorAll(".pub-item").forEach((item) => {
-        item.hidden = value !== "all" && item.dataset.year !== value;
-      });
-      updatePublicationYearHeadings(container);
+      applyPublicationFilter(container, value, lang);
     });
     return controls;
   }
@@ -275,9 +295,9 @@
     const journalItems = records.filter((item) => item.type !== "manuscript");
     const manuscriptItems = records.filter((item) => item.type === "manuscript");
     const controlsRoot = document.querySelector("[data-publications-controls]");
-    if (controlsRoot) clearAndAppend(controlsRoot, buildPublicationControls(root, journalItems, lang));
     clearAndAppend(root, ...journalItems.map((item, index) => buildPublicationItem(item, index + 1, lang)));
     updatePublicationYearHeadings(root);
+    if (controlsRoot) clearAndAppend(controlsRoot, buildPublicationControls(root, journalItems, lang));
     const manuscriptsRoot = document.querySelector("[data-manuscripts-root]");
     if (!manuscriptsRoot) return;
     if (!manuscriptItems.length) {

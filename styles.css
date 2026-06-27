@@ -778,6 +778,15 @@ h2 {
   gap: 10px;
 }
 
+.pub-item[hidden] {
+  display: none;
+}
+
+.pub-empty-message {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
 .pub-index {
   font-weight: 700;
   color: var(--accent-strong);
