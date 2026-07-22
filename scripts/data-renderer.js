@@ -1,10 +1,10 @@
 (function () {
   function getLang() {
-    return document.documentElement.lang === "zh" ? "zh" : "en";
+    return document.documentElement.lang.toLowerCase().startsWith("zh") ? "zh" : "en";
   }
 
   function getSiteRoot() {
-    return window.location.pathname.includes("/zh/") ? "../" : "";
+    return getLang() === "zh" ? "../" : "";
   }
 
   async function loadJson(relativePath) {
@@ -247,10 +247,10 @@
     const highlightRoot = document.querySelector("[data-home-highlights]");
     if (highlightRoot) {
       const cards = [
-        [getSiteRoot() + "publications.html", String(publications.length), lang === "zh" ? "论文发表" : "Publications"],
-        [getSiteRoot() + "conferences.html", String(conferences.length), lang === "zh" ? "学术会议" : "Conferences"],
-        [getSiteRoot() + "patents.html", String(patents.length), lang === "zh" ? "专利" : "Patents"],
-        [getSiteRoot() + "awards.html", String(awards.length), lang === "zh" ? "奖励荣誉" : "Awards"]
+        ["publications.html", String(publications.length), lang === "zh" ? "论文发表" : "Publications"],
+        ["conferences.html", String(conferences.length), lang === "zh" ? "学术会议" : "Conferences"],
+        ["patents.html", String(patents.length), lang === "zh" ? "专利" : "Patents"],
+        ["awards.html", String(awards.length), lang === "zh" ? "奖励荣誉" : "Awards"]
       ].map(([href, value, label]) => {
         const card = el("a", "highlight-card");
         card.href = href;
@@ -628,7 +628,7 @@
         list.append(li);
       });
       const link = el("a", "section-link", lang === "zh" ? "查看完整专利档案" : "View full patent archive");
-      link.href = getSiteRoot() + "patents.html";
+      link.href = "patents.html";
       clearAndAppend(
         patentRoot,
         el("h3", "subsection-title", lang === "zh" ? "专利概览" : "Patent Summary"),

@@ -31,6 +31,32 @@ function hydrateEmailLinks() {
   }
 }
 
+function initLanguageSwitch() {
+  const link = document.querySelector(".nav-switch a");
+  if (!link) return;
+
+  const isChinese = document.documentElement.lang.toLowerCase().startsWith("zh");
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  const lastPart = pathParts[pathParts.length - 1] || "index.html";
+  const pageName = lastPart.endsWith(".html") ? lastPart : "index.html";
+  const suffix = `${window.location.search}${window.location.hash}`;
+
+  if (isChinese) {
+    link.textContent = "English";
+    link.lang = "en";
+    link.hreflang = "en";
+    link.href = `../${pageName}${suffix}`;
+    link.setAttribute("aria-label", "Switch to English");
+    return;
+  }
+
+  link.textContent = "中文";
+  link.lang = "zh-CN";
+  link.hreflang = "zh-CN";
+  link.href = `zh/${pageName}${suffix}`;
+  link.setAttribute("aria-label", "切换到中文");
+}
+
 function bindAnalyticsEvents() {
   const links = document.querySelectorAll("[data-analytics-event]");
   if (!links.length) return;
@@ -94,6 +120,7 @@ function setActiveNavigation() {
 }
 
 (async () => {
+  initLanguageSwitch();
   if (window.SiteDataRenderer && typeof window.SiteDataRenderer.init === "function") {
     await window.SiteDataRenderer.init();
   }
