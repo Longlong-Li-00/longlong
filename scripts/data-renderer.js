@@ -132,6 +132,15 @@
     }
   }
 
+  function getPublicationSortTime(item) {
+    const onlineDate = String(item.notes || "").match(/Published online:\s*(\d{4}-\d{2}-\d{2})/i);
+    if (onlineDate) {
+      const timestamp = Date.parse(onlineDate[1]);
+      if (!Number.isNaN(timestamp)) return timestamp;
+    }
+    return Date.UTC(Number(item.year) || 0, 0, 1);
+  }
+
   function buildPublicationControls(container, items, lang) {
     const years = [...new Set(items.map((item) => String(item.year)).filter(Boolean))].sort((a, b) => b.localeCompare(a));
     const controls = el("div", "publication-controls");
@@ -238,9 +247,17 @@
 
     const publicationRoot = document.querySelector("[data-home-publications]");
     if (publicationRoot) {
+      const selectedPublications = publications
+        .filter((item) => item.selected)
+        .sort(
+          (left, right) =>
+            getPublicationSortTime(right) - getPublicationSortTime(left) ||
+            String(left.title_en || "").localeCompare(String(right.title_en || ""))
+        )
+        .slice(0, 4);
       clearAndAppend(
         publicationRoot,
-        ...publications.filter((item) => item.selected).slice(0, 4).map((item, index) => buildPublicationItem(item, index + 1, lang))
+        ...selectedPublications.map((item, index) => buildPublicationItem(item, index + 1, lang))
       );
     }
 
