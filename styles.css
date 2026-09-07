@@ -1279,13 +1279,15 @@ h2 {
 }
 
 .gallery-photo {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: 280px;
-  object-fit: contain;
+  justify-self: center;
+  display: block;
   border-radius: 8px;
   border: 1px solid var(--line);
-  background: var(--bg-accent);
+  background: var(--paper);
 }
 
 .item-title,
