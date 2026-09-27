@@ -1,5 +1,17 @@
 [
   {
+    "id": "award_013",
+    "year": 2026,
+    "name_en": "Best Poster Presentation Award, JCK MEMS/NEMS 2026",
+    "name_zh": "Best Poster Presentation Award, JCK MEMS/NEMS 2026",
+    "category": "academic_honor",
+    "level": "Conference presentation award",
+    "organization": "JCK MEMS/NEMS 2026",
+    "description_en": "Awarded for an best conference paper presented at JCK MEMS/NEMS 2026 (Japan–China–Korea Joint Conference on MEMS/NEMS).",
+    "description_zh": "Awarded for an best conference paper presented at JCK MEMS/NEMS 2026 (Japan–China–Korea Joint Conference on MEMS/NEMS).",
+    "notes": null
+  },
+  {
     "id": "award_006",
     "year": 2025,
     "name_en": "Best Poster Presentation Award, KSS 2025",
@@ -7,8 +19,8 @@
     "category": "academic_honor",
     "level": "Conference paper award",
     "organization": "KSS 2025",
-    "description_en": "Awarded for an best conference paper presented at KSS 2025.",
-    "description_zh": "因在 KSS 2025 发表的优秀会议论文获奖。",
+    "description_en": "Awarded for an best conference paper presented at KSS 2025 (Conference of the Korean Sensors Society).",
+    "description_zh": "因在 KSS 2025 (Conference of the Korean Sensors Society) 上发表的最佳会议论文而获奖。",
     "notes": null
   },
   {
@@ -31,8 +43,8 @@
     "category": "academic_honor",
     "level": "Conference paper award",
     "organization": "KMEMS 2025",
-    "description_en": "Awarded for an outstanding conference paper presented at KMEMS 2025.",
-    "description_zh": "因在 KMEMS 2025 发表的优秀会议论文获奖。",
+    "description_en": "Awarded for an outstanding conference paper presented at KMEMS 2025 (The Society of Micro and Nano Systems).",
+    "description_zh": "因在 KMEMS 2025 (The Society of Micro and Nano Systems) 上发表的优秀会议论文而获奖。",
     "notes": null
   },
   {
