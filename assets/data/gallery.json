@@ -1,5 +1,31 @@
 [
   {
+    "id": "gallery_045",
+    "date": "2026-10-02",
+    "date_display": "2026.10.02",
+    "title_en": "I ♥ MNTL: Off-Road Riding in Gyeongju",
+    "title_zh": "I♥MNTL+庆州越野",
+    "image": "assets/albums-optimized/20261002_I%E2%99%A5MNTL%2B%E5%BA%86%E5%B7%9E%E8%B6%8A%E9%87%8E.webp",
+    "category": null,
+    "description_en": null,
+    "description_zh": null,
+    "source_filename": "20261002_I♥MNTL+庆州越野.jpg",
+    "notes": null
+  },
+  {
+    "id": "gallery_044",
+    "date": "2026-09-30",
+    "date_display": "2026.09.30",
+    "title_en": "MNTL at Gyeongju World",
+    "title_zh": "MNTL+庆州世界",
+    "image": "assets/albums-optimized/20260930_MNTL%2B%E5%BA%86%E5%B7%9E%E4%B8%96%E7%95%8C.webp",
+    "category": null,
+    "description_en": null,
+    "description_zh": null,
+    "source_filename": "20260930_MNTL+庆州世界.jpg",
+    "notes": null
+  },
+  {
     "id": "gallery_043",
     "date": "2026-09-25",
     "date_display": "2026.09.25",

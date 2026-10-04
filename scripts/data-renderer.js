@@ -89,22 +89,10 @@
     authors.append(highlightLonglong(item.authors));
     const meta = el("span", "pub-meta", formatPublicationMeta(item));
     const linksWrap = el("div", "pub-links");
-    const mainLink = makeLinkChip("Link", item.link);
-    const doiLink = item.doi ? makeLinkChip("DOI", `https://doi.org/${item.doi}`) : null;
+    const mainLink = makeLinkChip("Link", item.link || (item.doi ? `https://doi.org/${item.doi}` : ""));
     if (mainLink) linksWrap.append(mainLink);
-    if (doiLink && (!item.link || !item.link.includes(item.doi))) linksWrap.append(doiLink);
     content.append(title, authors, meta);
     if (linksWrap.childElementCount) content.append(linksWrap);
-    if (item.bibtex) {
-      const citation = document.createElement("details");
-      citation.className = "citation-block";
-      const summary = document.createElement("summary");
-      summary.textContent = lang === "zh" ? "引用" : "BibTeX";
-      const pre = document.createElement("pre");
-      pre.textContent = item.bibtex;
-      citation.append(summary, pre);
-      content.append(citation);
-    }
     li.append(pubIndex, content);
     return li;
   }

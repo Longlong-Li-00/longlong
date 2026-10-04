@@ -1,5 +1,22 @@
 [
   {
+    "id": "pub_013",
+    "year": 2026,
+    "title_en": "A Self-Coupling Microcantilever-Probe Platform: Non-compressive Sustained Assessment of Cardiac Contractility and Cardiotoxicity Screening",
+    "title_zh": "A Self-Coupling Microcantilever-Probe Platform: Non-compressive Sustained Assessment of Cardiac Contractility and Cardiotoxicity Screening",
+    "authors": "Haolan Sun, Longlong Li, Eung-Sam Kim, Bong-Kee Lee, Dong-Weon Lee",
+    "journal": "Sensors and Actuators Reports",
+    "volume": null,
+    "issue": null,
+    "pages": "100516",
+    "doi": "10.1016/j.snr.2026.100516",
+    "link": "https://www.sciencedirect.com/science/article/pii/S2666053926000834",
+    "type": "journal",
+    "selected": false,
+    "bibtex": "@article{sun2026selfcoupling,\n  title = {A Self-Coupling Microcantilever-Probe Platform: Non-compressive Sustained Assessment of Cardiac Contractility and Cardiotoxicity Screening},\n  author = {Haolan Sun and Longlong Li and Eung-Sam Kim and Bong-Kee Lee and Dong-Weon Lee},\n  journal = {Sensors and Actuators Reports},\n  year = {2026},\n  pages = {100516},\n  doi = {10.1016/j.snr.2026.100516},\n  url = {https://www.sciencedirect.com/science/article/pii/S2666053926000834}\n}",
+    "notes": "Published online: 2026-09-30. ISSN: 2666-0539. Volume and issue were not yet assigned in the verified publisher record."
+  },
+  {
     "id": "pub_008",
     "year": 2026,
     "title_en": "Air-Breakdown Triboelectric Nanogenerator Inspired by Transistor Architecture for Low-Force Human-Machine Interfaces",
