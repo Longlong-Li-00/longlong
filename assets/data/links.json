@@ -117,6 +117,15 @@
     "notes": null
   },
   {
+    "id": "linkedin",
+    "label_en": "LinkedIn",
+    "label_zh": "LinkedIn",
+    "url": "https://www.linkedin.com/in/longlong-li-11a7123a2/",
+    "type": "profile",
+    "visible": true,
+    "notes": null
+  },
+  {
     "id": "orcid",
     "label_en": "ORCID",
     "label_zh": "ORCID",

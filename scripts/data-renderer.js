@@ -190,7 +190,7 @@
     const profileLinks = document.querySelector("[data-home-profile-links]");
     if (profileLinks) {
       const nodes = [makeEmailLink("Email", "Email")];
-      ["google_scholar", "orcid", "homepage", "mntl"].forEach((id) => {
+      ["google_scholar", "orcid", "linkedin", "homepage", "mntl"].forEach((id) => {
         const item = getProfileLink(links, id);
         if (!item || !item.url) return;
         const anchor = makeLinkChip(item.label_en || item.label_zh || "", item.url);
@@ -279,7 +279,7 @@
 
     const contactLinks = document.querySelector("[data-home-contact-links]");
     if (contactLinks) {
-      const nodes = ["google_scholar", "orcid", "homepage", "mntl"]
+      const nodes = ["google_scholar", "orcid", "linkedin", "homepage", "mntl"]
         .map((id) => getProfileLink(links, id))
         .filter((item) => item && item.url)
         .map((item) => {
