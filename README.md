@@ -46,6 +46,28 @@ You can also use:
 preview-local.cmd
 ```
 
+## Conference digital card
+
+The mobile-first conference contact page is available at `/connect/`.
+
+Its editable profile, contact, research, and conference fields are centralized in:
+
+```text
+connect/profile-config.js
+```
+
+To reuse the page for a future conference:
+
+1. Update the `conference` object in `connect/profile-config.js`.
+2. Place the new poster PDF and thumbnail under `assets/conference/<conference-name>/`.
+3. Update `posterUrl` and `posterThumbnail` in the same configuration object.
+4. Replace `identity.profileImage` if a different portrait should be used.
+5. Preview `/connect/` on a phone-sized viewport and test the vCard download before deployment.
+
+The Save Contact button generates `Longlong_Li.vcf` in the browser from the centralized configuration. Contact details are not duplicated in a separately maintained vCard file.
+
+The page vendors a small selected set of MIT-licensed Tabler Icons under `connect/icons/`; the package license is included alongside the icons.
+
 ## Common maintenance notes
 
 - Do not preview the site by double-clicking HTML files. The website loads JSON with `fetch()`, so it requires a local HTTP server.

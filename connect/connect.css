@@ -1,0 +1,642 @@
+:root {
+  color-scheme: light;
+  --navy: #0b2d5b;
+  --navy-strong: #061f42;
+  --blue: #1677e8;
+  --blue-deep: #0d5fc1;
+  --blue-soft: #eaf4ff;
+  --page: #f4f9fe;
+  --paper: #ffffff;
+  --body: #35465f;
+  --muted: #6b7d96;
+  --border: rgba(20, 90, 160, 0.14);
+  --shadow: 0 22px 70px rgba(20, 65, 115, 0.14), 0 4px 18px rgba(20, 65, 115, 0.08);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--page);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--body);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: max(22px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
+}
+
+.digital-card {
+  width: min(100%, 548px);
+  margin: 0 auto;
+  padding: 22px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+.profile-header {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.portrait-wrap {
+  position: relative;
+  width: 104px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  box-shadow: 0 8px 24px rgba(34, 101, 177, 0.2), 0 0 0 1px rgba(22, 119, 232, 0.12);
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.portrait-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  color: var(--navy);
+  font-size: 1.7rem;
+  font-weight: 750;
+}
+
+.portrait-wrap.image-unavailable .portrait {
+  display: none;
+}
+
+.portrait-wrap.image-unavailable .portrait-fallback {
+  display: grid;
+}
+
+.identity {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 3px;
+  color: var(--navy-strong);
+  font-size: clamp(2rem, 9vw, 2.55rem);
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+
+.role {
+  margin-bottom: 5px;
+  color: var(--body);
+  font-size: 1rem;
+  font-weight: 620;
+}
+
+.institution {
+  margin-bottom: 0;
+  color: var(--navy);
+  font-size: 0.93rem;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.research-summary {
+  margin-top: 19px;
+}
+
+.research-areas {
+  margin-bottom: 11px;
+  color: var(--blue-deep);
+  font-size: 1rem;
+  font-weight: 730;
+  line-height: 1.44;
+}
+
+.research-statement {
+  margin-bottom: 0;
+  padding-top: 11px;
+  color: var(--body);
+  border-top: 2px solid rgba(22, 119, 232, 0.17);
+  font-size: 0.92rem;
+  line-height: 1.58;
+}
+
+.primary-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  font-weight: 730;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, background-color 140ms ease;
+}
+
+.button img {
+  width: 23px;
+  height: 23px;
+}
+
+.button-primary {
+  color: #ffffff;
+  background: var(--blue);
+  box-shadow: 0 9px 20px rgba(22, 119, 232, 0.24);
+}
+
+.button-primary img {
+  filter: brightness(0) invert(1);
+}
+
+.button-secondary {
+  color: var(--blue-deep);
+  background: #ffffff;
+  border-color: rgba(22, 119, 232, 0.28);
+}
+
+.button-secondary img,
+.contact-icon img,
+.conference-kicker img,
+.poster-link img,
+.section-heading img,
+.card-footer img {
+  filter: invert(37%) sepia(97%) saturate(2627%) hue-rotate(199deg) brightness(95%) contrast(92%);
+}
+
+.button:hover,
+.button:focus-visible,
+.contact-link:hover,
+.contact-link:focus-visible,
+.poster-link:hover,
+.poster-link:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button:active,
+.contact-link:active,
+.poster-link:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible,
+.contact-link:focus-visible,
+.poster-link:focus-visible {
+  outline: 3px solid rgba(22, 119, 232, 0.32);
+  outline-offset: 3px;
+}
+
+.action-status {
+  min-height: 0;
+  margin: 8px 2px 0;
+  color: var(--blue-deep);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.action-status:empty {
+  display: none;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.contact-link {
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--navy);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  box-shadow: 0 5px 14px rgba(20, 65, 115, 0.06);
+  font-size: 0.82rem;
+  font-weight: 680;
+  text-decoration: none;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.contact-link:hover {
+  border-color: rgba(22, 119, 232, 0.3);
+  box-shadow: 0 8px 18px rgba(20, 65, 115, 0.1);
+}
+
+.contact-icon {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+}
+
+.contact-icon img {
+  width: 27px;
+  height: 27px;
+}
+
+.contact-link-orcid .contact-icon {
+  border-radius: 50%;
+  background: #a6ce39;
+}
+
+.contact-link-orcid .contact-icon img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.conference-card,
+.interest-card {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow: 0 7px 20px rgba(20, 65, 115, 0.075);
+}
+
+.conference-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 154px;
+  overflow: hidden;
+}
+
+.conference-copy {
+  min-width: 0;
+  padding: 17px 8px 16px 17px;
+}
+
+.conference-kicker,
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conference-kicker img,
+.section-heading img {
+  width: 22px;
+  height: 22px;
+}
+
+.conference-kicker h2,
+.section-heading h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.conference-type {
+  margin-left: auto;
+  padding: 4px 8px;
+  color: var(--blue-deep);
+  background: var(--blue-soft);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 740;
+}
+
+.poster-title {
+  margin: 11px 0 12px;
+  color: var(--navy-strong);
+  font-size: 0.91rem;
+  font-weight: 720;
+  line-height: 1.37;
+}
+
+.poster-link {
+  min-height: 44px;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: var(--blue-deep);
+  background: var(--blue-soft);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 740;
+  text-decoration: none;
+  transition: transform 140ms ease, background-color 140ms ease;
+}
+
+.poster-link:hover {
+  background: #d9ebff;
+}
+
+.poster-link img {
+  width: 17px;
+  height: 17px;
+}
+
+.poster-link.is-disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+  background: #eef2f6;
+}
+
+.poster-visual {
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  background: #ffffff;
+}
+
+.poster-visual::after {
+  content: "Poster preview";
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 4px 7px;
+  color: #ffffff;
+  background: rgba(6, 31, 66, 0.72);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.poster-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.poster-visual.image-unavailable img {
+  display: none;
+}
+
+.poster-visual.image-unavailable::before {
+  content: "Conference poster";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  color: var(--blue-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.interest-card {
+  padding: 16px;
+}
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interest-tags li {
+  flex: 1 1 120px;
+  padding: 7px 12px;
+  color: var(--navy);
+  background: var(--blue-soft);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 630;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 16px -22px -22px;
+  padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+  color: #486583;
+  background: #f3f8fe;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.card-footer img {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+}
+
+.card-footer p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.noscript-message {
+  margin: 20px auto;
+  padding: 12px 16px;
+  max-width: 548px;
+  color: #7a1d1d;
+  background: #fff0f0;
+  border: 1px solid #e8b7b7;
+  border-radius: 12px;
+  font: 600 0.9rem/1.4 system-ui, sans-serif;
+}
+
+@media (min-width: 760px) {
+  body {
+    position: relative;
+    background-color: #eef6fd;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -24px;
+    z-index: 0;
+    background-image: url("/assets/conference/microtas2026/poster-thumb.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: blur(9px);
+    opacity: 0.055;
+  }
+
+  .page-shell {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-shell {
+    padding: max(10px, env(safe-area-inset-top)) 8px max(12px, env(safe-area-inset-bottom));
+  }
+
+  .digital-card {
+    padding: 18px 14px;
+    border-radius: 24px;
+  }
+
+  .profile-header {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .portrait-wrap {
+    width: 88px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .role,
+  .institution {
+    font-size: 0.86rem;
+  }
+
+  .research-areas {
+    font-size: 0.94rem;
+  }
+
+  .research-statement {
+    font-size: 0.86rem;
+  }
+
+  .button {
+    padding-inline: 10px;
+    font-size: 0.88rem;
+  }
+
+  .contact-link {
+    min-height: 76px;
+    font-size: 0.74rem;
+  }
+
+  .conference-card {
+    grid-template-columns: minmax(0, 1fr) 122px;
+  }
+
+  .conference-copy {
+    padding: 15px 7px 14px 14px;
+  }
+
+  .poster-visual {
+    min-height: 0;
+  }
+
+  .conference-type {
+    display: none;
+  }
+
+  .poster-title {
+    font-size: 0.84rem;
+  }
+
+  .card-footer {
+    margin-inline: -14px;
+    margin-bottom: -18px;
+  }
+}
+
+@media (max-width: 350px) {
+  .primary-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .conference-card {
+    grid-template-columns: 1fr;
+  }
+
+  .poster-visual {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
