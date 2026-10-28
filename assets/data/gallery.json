@@ -1,5 +1,31 @@
 [
   {
+    "id": "gallery_049",
+    "date": "2026-10-23",
+    "date_display": "2026.10.23",
+    "title_en": "View of the Sagrada Família from Carmel Hill, Barcelona",
+    "title_zh": "焦糖山上俯瞰圣家堂，巴塞罗那",
+    "image": "assets/albums-optimized/20261023_Carmel_Hill_Sagrada_Familia_Barcelona.webp",
+    "category": null,
+    "description_en": null,
+    "description_zh": null,
+    "source_filename": "20261023_Carmel_Hill_Sagrada_Familia_Barcelona.jpg",
+    "notes": null
+  },
+  {
+    "id": "gallery_048",
+    "date": "2026-10-19",
+    "date_display": "2026.10.19",
+    "title_en": "μTAS 2026 in Granada, Spain",
+    "title_zh": "μTAS 2026，西班牙格拉纳达",
+    "image": "assets/albums-optimized/20261019_uTAS_2026_Granada.webp",
+    "category": null,
+    "description_en": null,
+    "description_zh": null,
+    "source_filename": "20261019_uTAS_2026_Granada.jpg",
+    "notes": null
+  },
+  {
     "id": "gallery_046",
     "date": "2026-10-09",
     "date_display": "2026.10.09",
