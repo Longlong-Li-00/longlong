@@ -1,5 +1,29 @@
 [
   {
+    "id": "conf_013",
+    "year": 2026,
+    "title_en": "A Flexible Electromechanical Sensing Platform for In Vitro Hypoxic Cardiac Tissue Models",
+    "title_zh": "A Flexible Electromechanical Sensing Platform for In Vitro Hypoxic Cardiac Tissue Models",
+    "authors": "Longlong Li, Haolan Sun, Jongyun Kim, Dong-Weon Lee",
+    "conference": "MicroTAS 2026",
+    "location": "Granada, Spain",
+    "presentation_type": "oral",
+    "link": null,
+    "notes": null
+  },
+  {
+    "id": "conf_014",
+    "year": 2026,
+    "title_en": "Backside DRIE Release of Grooved SU-8 Cantilever Arrays for Low Warpage and Reproducible Cardiomyocyte Beating Readout",
+    "title_zh": "Backside DRIE Release of Grooved SU-8 Cantilever Arrays for Low Warpage and Reproducible Cardiomyocyte Beating Readout",
+    "authors": "Xin Luo, Hong-Mo Koo, Haolan Sun, Longlong Li, Dong-Weon Lee",
+    "conference": "MicroTAS 2026",
+    "location": "Granada, Spain",
+    "presentation_type": "oral",
+    "link": null,
+    "notes": null
+  },
+  {
     "id": "conf_005",
     "year": 2026,
     "title_en": "Multimodal Microelectrode-Microcantilever Array for Electromechanical Analysis of Cardiomyocyte Tissue in Drug Testing",
