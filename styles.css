@@ -918,6 +918,19 @@ h2 {
   line-height: 1.45;
 }
 
+[data-patents-root] .item-title,
+[data-awards-root] .item-title {
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+[data-patents-root] .item-subtitle,
+[data-patents-root] .item-description,
+[data-awards-root] .item-subtitle {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
 [data-conference-root] .item-description {
   margin-top: 2px;
 }
