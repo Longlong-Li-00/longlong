@@ -124,7 +124,9 @@ Patent descriptions are intentionally not rendered on the Patents page.
 
 ### Conferences
 
-Required: `id`, `year`, `title_en`, `authors`, `conference`, `presentation_type`
+Required: `id`, `year`, `date`, `title_en`, `authors`, `conference`, `presentation_type`
+
+Use an exact ISO date (`YYYY-MM-DD`) in `date`. Conference records are sorted by this full date in descending order; `year` must match the year portion of `date`.
 
 Allowed `presentation_type` values:
 
@@ -136,6 +138,8 @@ The Conferences page groups records by `presentation_type`, so oral/poster class
 ### Awards
 
 Required: `id`, `year`, `name_en`, `category`
+
+The optional `date` field uses `YYYY-MM`; when present, it controls month-level display and sorting.
 
 Recommended `category` values:
 

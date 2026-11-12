@@ -354,6 +354,8 @@ def parse_conferences(en: Node, zh: Node) -> list[dict]:
         zh_items = zh_groups[group_index].find_all(class_name="section-item")
         for item_index, en_item in enumerate(en_items):
             index += 1
+            period = node_text(en_item.first(class_name="item-period"))
+            normalized_date = period.replace(".", "-") if re.fullmatch(r"\d{4}\.\d{2}\.\d{2}", period) else ""
             subtitle = node_text(en_item.first(class_name="item-subtitle"))
             venue, authors = (subtitle.split(" | ", 1) + [""])[:2]
             conference, location = split_conference_location(venue)
@@ -362,7 +364,8 @@ def parse_conferences(en: Node, zh: Node) -> list[dict]:
             records.append(
                 {
                     "id": f"conf_{index:03d}",
-                    "year": int(node_text(en_item.first(class_name="item-period"))),
+                    "year": int(period[:4]),
+                    "date": normalized_date,
                     "title_en": node_text(en_item.first(class_name="item-title")),
                     "title_zh": node_text(zh_items[item_index].first(class_name="item-title")),
                     "authors": authors,
@@ -428,10 +431,16 @@ def parse_awards(en: Node, zh: Node) -> list[dict]:
             index += 1
             name_en = node_text(en_item.first(class_name="item-title"))
             description_en = node_text(en_item.first(class_name="item-subtitle"))
+            period = node_text(en_item.first(class_name="item-period"))
+            period_match = re.fullmatch(r"(\d{4})(?:\.(\d{2}))?", period)
+            if not period_match:
+                raise ValueError(f"Unsupported award period: {period!r}")
+            year, month = period_match.groups()
             records.append(
                 {
                     "id": f"award_{index:03d}",
-                    "year": int(node_text(en_item.first(class_name="item-period"))),
+                    "year": int(year),
+                    "date": f"{year}-{month}" if month else "",
                     "name_en": name_en,
                     "name_zh": node_text(zh_items[item_index].first(class_name="item-title")),
                     "category": category,
@@ -762,8 +771,8 @@ HEADERS = {
     "profile": ["field", "value_en", "value_zh", "notes"],
     "publications": ["id", "year", "title_en", "title_zh", "authors", "journal", "volume", "issue", "pages", "doi", "link", "type", "selected", "bibtex", "notes"],
     "patents": ["id", "date", "title_zh", "title_en", "inventors", "applicant", "patent_type", "patent_number", "application_number", "status", "application_date", "grant_or_publication_date", "notes"],
-    "conferences": ["id", "year", "title_en", "title_zh", "authors", "conference", "location", "presentation_type", "link", "notes"],
-    "awards": ["id", "year", "name_en", "name_zh", "category", "level", "organization", "description_en", "description_zh", "notes"],
+    "conferences": ["id", "year", "title_en", "title_zh", "authors", "conference", "location", "presentation_type", "link", "notes", "date"],
+    "awards": ["id", "year", "name_en", "name_zh", "category", "level", "organization", "description_en", "description_zh", "notes", "date"],
     "projects": ["id", "title_en", "title_zh", "period", "lab", "background_en", "background_zh", "methods_en", "methods_zh", "contribution_en", "contribution_zh", "result_en", "result_zh", "image", "visible", "order", "notes"],
     "gallery": ["id", "date", "title_en", "title_zh", "image", "category", "description_en", "description_zh", "source_filename", "notes"],
     "cv": ["section", "item_id", "year_or_period", "title_en", "title_zh", "organization", "description_en", "description_zh", "order", "notes"],

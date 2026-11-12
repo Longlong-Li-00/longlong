@@ -70,6 +70,11 @@ def clean_text(text: Any) -> str:
 
 def sort_by_year(items: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     def key(item: dict[str, Any]) -> tuple[int, str]:
+        raw_date = clean_text(item.get("date"))
+        date_match = re.fullmatch(r"(\d{4})-(\d{2})(?:-(\d{2}))?", raw_date)
+        if date_match:
+            date_order = int("".join(part or "00" for part in date_match.groups()))
+            return (-date_order, str(item.get("id") or item.get("item_id") or item.get("title_en") or ""))
         raw = item.get("year") or item.get("year_or_period") or item.get("date") or ""
         match = re.search(r"\d{4}", str(raw))
         year = int(match.group(0)) if match else -1
@@ -112,15 +117,15 @@ def format_conference(conf: dict[str, Any], lang: str) -> str:
     authors = clean_text(conf.get("authors"))
     conference = clean_text(conf.get("conference"))
     location = clean_text(conf.get("location"))
-    year = clean_text(conf.get("year"))
-    venue = ", ".join(part for part in [conference, location, year] if part)
+    conference_date = clean_text(conf.get("date_display") or conf.get("date") or conf.get("year"))
+    venue = ", ".join(part for part in [conference, location, conference_date] if part)
     link = clean_text(conf.get("link"))
     parts = [part for part in [title, authors, venue, f"Link: {link}" if link else ""] if part]
     return ". ".join(parts)
 
 
 def format_award(award: dict[str, Any], lang: str) -> str:
-    year = clean_text(award.get("year"))
+    year = clean_text(award.get("date_display") or award.get("date") or award.get("year"))
     name = clean_text(field(award, "name", lang))
     level = clean_text(award.get("level"))
     org = clean_text(award.get("organization"))

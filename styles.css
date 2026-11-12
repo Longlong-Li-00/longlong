@@ -612,6 +612,11 @@ h2 {
   color: var(--muted);
 }
 
+.awards-list .item-subtitle {
+  white-space: pre-line;
+  line-height: 1.65;
+}
+
 .timeline-title,
 .item-title {
   margin-top: 4px;

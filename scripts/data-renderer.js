@@ -380,16 +380,17 @@
       if (link) desc.append(link);
       body.append(desc);
     }
-    node.append(el("div", "item-period", String(item.year)), body);
+    node.append(el("div", "item-period", item.date_display || item.date || String(item.year)), body);
     return node;
   }
 
   function renderConferences(conferences, lang) {
     const root = document.querySelector("[data-conferences-root]");
     if (!root) return;
+    const byDateDescending = (a, b) => String(b.date || `${b.year || 0}-01-01`).localeCompare(String(a.date || `${a.year || 0}-01-01`));
     const groups = [
-      [lang === "zh" ? "口头报告" : "Oral Presentations", conferences.filter((item) => item.presentation_type === "oral")],
-      [lang === "zh" ? "海报展示" : "Poster Presentations", conferences.filter((item) => item.presentation_type === "poster")]
+      [lang === "zh" ? "口头报告" : "Oral Presentations", conferences.filter((item) => item.presentation_type === "oral").sort(byDateDescending)],
+      [lang === "zh" ? "海报展示" : "Poster Presentations", conferences.filter((item) => item.presentation_type === "poster").sort(byDateDescending)]
     ];
     clearAndAppend(
       root,
@@ -426,11 +427,17 @@
           group.items.forEach((item) => {
             const node = el("div", "section-item");
             const body = el("div", "item-body");
+            const description = getLocalized(item, "description", lang) || item.level || item.organization || "";
+            const subtitle = el("div", "item-subtitle");
+            String(description)
+              .split(/\r?\n/)
+              .filter(Boolean)
+              .forEach((line) => subtitle.append(el("div", "item-subtitle-line", line)));
             body.append(
               el("div", "item-title", getLocalized(item, "name", lang) || item.name_en),
-              el("div", "item-subtitle", getLocalized(item, "description", lang) || item.level || item.organization || "")
+              subtitle
             );
-            node.append(el("div", "item-period", String(item.year)), body);
+            node.append(el("div", "item-period", item.date_display || item.date || String(item.year)), body);
             list.append(node);
           });
           section.append(el("h3", "subsection-title", group.title), list);

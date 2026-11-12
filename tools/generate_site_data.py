@@ -36,12 +36,12 @@ SHEET_SPECS: dict[str, SheetSpec] = {
         ("date", "patent_number", "application_number", "status", "application_date", "grant_or_publication_date", "notes"),
     ),
     "conferences": SheetSpec(
-        ("id", "year", "title_en", "authors", "conference", "presentation_type"),
+        ("id", "year", "date", "title_en", "authors", "conference", "presentation_type"),
         ("title_zh", "location", "link", "notes"),
     ),
     "awards": SheetSpec(
         ("id", "year", "name_en", "category"),
-        ("name_zh", "level", "organization", "description_en", "description_zh", "notes"),
+        ("name_zh", "level", "organization", "description_en", "description_zh", "notes", "date"),
     ),
     "projects": SheetSpec(
         ("id", "title_en", "title_zh", "visible", "order"),
@@ -262,9 +262,12 @@ def normalize_conferences(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     for row in rows:
         year = clean_int(row["year"])
+        conference_date = clean_date(row["date"])
         item = {
             "id": clean_text(row["id"]) or "",
             "year": year,
+            "date": conference_date,
+            "date_display": format_display_date(conference_date),
             "title_en": clean_text(row["title_en"]) or "",
             "title_zh": clean_text(row.get("title_zh")),
             "authors": (clean_text(row["authors"]) or "").replace("H. Sun", "Haolan Sun"),
@@ -274,12 +277,17 @@ def normalize_conferences(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "link": clean_text(row.get("link")),
             "notes": clean_text(row.get("notes")),
         }
-        if not item["id"] or year is None or not item["title_en"] or not item["conference"]:
+        if not item["id"] or year is None or not conference_date or not item["title_en"] or not item["conference"]:
             raise ValueError(f"conferences row {row['_row_index']}: missing critical field")
+        if int(conference_date[:4]) != year:
+            raise ValueError(
+                f"conferences row {row['_row_index']}: date year {conference_date[:4]} does not match year {year}"
+            )
         if item["presentation_type"] not in {"oral", "poster"}:
             raise ValueError(f"conferences row {row['_row_index']}: presentation_type must be oral or poster")
         items.append(item)
-    items.sort(key=lambda item: (-item["year"], item["title_en"].lower()))
+    items.sort(key=lambda item: item["title_en"].lower())
+    items.sort(key=lambda item: item["date"], reverse=True)
     return items
 
 
@@ -287,9 +295,21 @@ def normalize_awards(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     for row in rows:
         year = clean_int(row["year"])
+        award_date = clean_date(row.get("date"))
+        if award_date:
+            parts = award_date.split("-")
+            if len(parts) != 2 or not all(part.isdigit() for part in parts):
+                raise ValueError(f"awards row {row['_row_index']}: date must use YYYY-MM")
+            date_year, date_month = (int(part) for part in parts)
+            if not 1 <= date_month <= 12:
+                raise ValueError(f"awards row {row['_row_index']}: invalid award month")
+            if year is not None and date_year != year:
+                raise ValueError(f"awards row {row['_row_index']}: date year does not match year")
         item = {
             "id": clean_text(row["id"]) or "",
             "year": year,
+            "date": award_date,
+            "date_display": award_date.replace("-", ".") if award_date else None,
             "name_en": clean_text(row["name_en"]) or "",
             "name_zh": clean_text(row.get("name_zh")),
             "category": clean_text(row["category"]) or "",
@@ -302,7 +322,8 @@ def normalize_awards(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if not item["id"] or year is None or not item["name_en"] or not item["category"]:
             raise ValueError(f"awards row {row['_row_index']}: missing critical field")
         items.append(item)
-    items.sort(key=lambda item: (-item["year"], item["name_en"].lower()))
+    items.sort(key=lambda item: item["name_en"].lower())
+    items.sort(key=lambda item: item["date"] or f"{item['year']:04d}-00", reverse=True)
     return items
 
 
